@@ -55,6 +55,10 @@ export default function FloatingChatWidget() {
     setMessages(responseData.messages);
 
   } catch (error) {
+    console.error("Chat error:", error);
+    if (error.response?.status === 503) {
+      alert("AI is temporarily unavailable. Please check the API keys on the server.");
+    }
   } finally {
     setIsLoading(false);
   }
