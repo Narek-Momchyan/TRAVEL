@@ -47,7 +47,7 @@ pyparsing==3.3.2
 python-discovery==1.4.0
 python-dotenv==1.2.2
 requests==2.34.2
-setuptools==82.0.1
+setuptools==69.5.1
 six==1.17.0
 sqlparse==0.5.5
 tqdm==4.68.2
