@@ -60,3 +60,4 @@ uritemplate==4.2.0
 urllib3==2.7.0
 virtualenv==21.4.2
 yarl==1.24.2
+gunicorn==20.1.0
