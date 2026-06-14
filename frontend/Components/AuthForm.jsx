@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+import api from '@/lib/api';
 const AuthForm = () => {
   const [step, setStep] = useState(1); 
   const [loading, setLoading] = useState(false);
@@ -20,7 +20,7 @@ const AuthForm = () => {
           return null;
         };
         const lang = getCookie('lang') || 'en';
-        const res = await axios.get(`http://127.0.0.1:8000/api/auth-translations/?lang=${lang}`);
+        const res = await api.get(`/auth-translations/?lang=${lang}`);
         if (res.data && res.data.length > 0) {
           setTranslations(res.data[0]);
         } else {
@@ -70,7 +70,7 @@ const AuthForm = () => {
       if (formData.email) payload.email = formData.email;
       if (formData.phone_number) payload.phone_number = formData.phone_number;
 
-      const response = await axios.post('http://127.0.0.1:8000/api/register/', payload);
+      const response = await api.post(`/register/`, payload);
 
       if (response.status === 201) {
         setSuccessMsg(translations?.msg_code_sent);
@@ -95,7 +95,7 @@ const AuthForm = () => {
       if (formData.email) payload.email = formData.email;
       if (formData.phone_number) payload.phone_number = formData.phone_number;
 
-      const response = await axios.post('http://127.0.0.1:8000/api/verify-otp/', payload);
+      const response = await api.post(`/verify-otp/`, payload);
 
       if (response.status === 200) {
         localStorage.setItem('accessToken', response.data.tokens.access);
