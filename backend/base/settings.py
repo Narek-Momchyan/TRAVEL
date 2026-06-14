@@ -143,10 +143,8 @@ STATIC_URL = 'static/'
 
 CORS_ALLOW_ALL_ORIGINS = False  
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-    "https://travel-weld-iota.vercel.app",
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^https://.*\.vercel\.app$",
 ]
 
 import os
