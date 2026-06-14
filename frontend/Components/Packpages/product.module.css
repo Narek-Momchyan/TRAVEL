@@ -1,0 +1,182 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    font-family: sans-serif;
+}
+
+.filterSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.searchBox {
+    display: flex;
+    align-items: center;
+    border: 1.5px solid #48aeb6;
+    padding: 8px 15px;
+    border-radius: 2px;
+    width: 320px;
+}
+
+.searchIcon {
+    color: #48aeb6;
+    font-size: 16px;
+    margin-right: 15px;
+}
+
+.searchInput {
+    border: none;
+    outline: none;
+    font-size: 16px;
+    color: #48aeb6;
+    width: 100%;
+}
+
+.searchInput::placeholder {
+    color: #48aeb6;
+}
+
+.priceFilterBox {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.priceInput {
+    border: 1.5px solid #48aeb6;
+    width: 60px;
+    padding: 8px 5px;
+    text-align: center;
+    outline: none;
+    color: #48aeb6;
+    font-size: 16px;
+    border-radius: 2px;
+}
+
+.priceInput::placeholder {
+    color: #48aeb6;
+}
+
+.separator {
+    color: #48aeb6;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.gridContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    position: relative;
+    overflow: hidden;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.imageWrapper {
+    position: relative;
+    width: 100%;
+    height: 190px;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.discountBadge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    background-color: transparent;
+}
+
+.bottomBar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(72, 174, 182, 0.9);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    color: #fff;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+.card:hover .bottomBar {
+    background-color: #fff;
+    color: #48aeb6;
+}
+
+.heartIcon {
+    font-size: 18px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.heartIcon:hover {
+    transform: scale(1.2);
+}
+
+.title {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.cardBody {
+    padding: 15px;
+    background-color: #fafafa;
+    border-top: 1px solid #eaeaea;
+}
+
+.description {
+    font-size: 13px;
+    color: #666;
+    margin: 0 0 12px 0;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.ratingPriceBox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rating {
+    font-size: 14px;
+    color: #f39c12;
+    font-weight: bold;
+}
+
+.price {
+    font-size: 16px;
+    color: #48aeb6;
+    font-weight: bold;
+}

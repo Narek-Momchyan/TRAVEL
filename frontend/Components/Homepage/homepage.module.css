@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap');
+
+.heroInfoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.8rem;
+  padding: 6rem 2rem;
+  max-width: 720px;
+  margin: 0 auto;
+  font-family: 'Outfit', sans-serif;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  color: #0b5c7a;
+  font-size: 2.6rem;
+  font-weight: 800;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+}
+
+.title img {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 2px 4px rgba(11, 92, 122, 0.3));
+}
+
+.subtitle {
+  color: #3a7a90;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.75;
+  margin: 0;
+  max-width: 560px;
+}
+
+.button {
+  position: relative;
+  background: linear-gradient(135deg, #1a8faa 0%, #0b698f 100%);
+  color: white;
+  padding: 1rem 3rem;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: inline-block;
+  border-radius: 2px;
+  box-shadow: 0 4px 15px rgba(11, 105, 143, 0.35);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.1);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(11, 105, 143, 0.45);
+}
+
+.button:hover::after {
+  opacity: 1;
+}
+
+.button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 15px rgba(11, 105, 143, 0.35);
+}
+
+.companiesSection {
+  padding: 4rem 2rem;
+  background-color: #f8f9fa;
+}
+.companiesContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.companyLogo img {
+  max-width: 120px;
+  height: auto;
+  filter: grayscale(40%);
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+.companyLogo img:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+
+.whySection {
+  padding: 4rem 2rem;
+  background-color: #ffffff;
+}
+
+.whyContainer {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.whyTitle {
+  color: #44a6bd;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  text-decoration: underline;
+  text-underline-offset: 8px;
+}
+
+.whyContent {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+}
+
+.whyLeft {
+  flex: 1;
+}
+
+.whyImage {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.whyRight {
+  flex: 1;
+}
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.accordionItem {
+  border: 1px solid #44a6bd;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.accordionHeader {
+  padding: 0.8rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  background-color: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.accordionLabel {
+  color: #44a6bd;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.accordionIcon {
+  font-size: 0.8rem;
+  color: #44a6bd;
+}
+
+.accordionBody {
+  padding: 1rem;
+  border-top: 1px solid #44a6bd;
+  background-color: #ffffff;
+}
+
+.accordionText {
+  color: #44a6bd;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .whyContent {
+    flex-direction: column;
+  }
+}
