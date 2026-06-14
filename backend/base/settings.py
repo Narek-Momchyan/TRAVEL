@@ -59,8 +59,8 @@ REST_FRAMEWORK = {
         'rest_framework.throttling.ScopedRateThrottle', 
     ],
     'DEFAULT_THROTTLE_RATES': {
-        'anon': '100/minute',
-        'user': '1000/minute',
+        'anon': '10000/minute',
+        'user': '10000/minute',
         'ai_chat_limit': '5/minute' 
     }
 }
@@ -158,7 +158,7 @@ MEDIA_ROOT = BASE_DIR
 import os
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv(override=True)
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
