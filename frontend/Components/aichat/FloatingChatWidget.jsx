@@ -31,7 +31,7 @@ export default function FloatingChatWidget() {
 
     // Եթե տոկեն չկա, մի՛ ուղարկիր, որպեսզի 401 չստանաս
     if (!token) {
-      console.warn("No token found");
+      setMessages((prev) => [...prev, { id: Date.now() + 1, role: "model", content: "Խնդրում ենք մուտք գործել համակարգ, որպեսզի կարողանաք զրուցել վիրտուալ գիդի հետ։ (Please log in to chat with the virtual guide.)" }]);
       setIsLoading(false);
       return;
     }
