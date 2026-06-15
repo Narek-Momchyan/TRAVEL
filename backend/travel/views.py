@@ -181,7 +181,7 @@ class ContactViewSet(viewsets.ViewSet):
             
             payload = {
                 "from": "Contact Form <onboarding@resend.dev>",
-                "to": [os.getenv('EMAIL_USER', 'narekmomchyan80@gmail.com')],
+                "to": ["narekmomchyan80@gmail.com"],
                 "subject": f"Tour agency message from {name}",
                 "html": f"<p><strong>Name:</strong> {name}</p><p><strong>Email:</strong> {email}</p><p><strong>Message:</strong><br>{message}</p>",
                 "reply_to": email
