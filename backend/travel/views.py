@@ -162,25 +162,41 @@ class ContactViewSet(viewsets.ViewSet):
     def create(self, request):
         serializer = ContactSerializer(data=request.data)
         if serializer.is_valid():
+            import requests
+            import os
+            
             name = serializer.validated_data['name']
             email = serializer.validated_data['email']
             message = serializer.validated_data['message']
             
-            subject = f"Tour agency - {name}"
-            body = f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
+            resend_api_key = os.getenv('RESEND_API_KEY')
+            
+            if not resend_api_key:
+                return Response({"error": "Resend API key is missing. Please configure it in .env"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+            headers = {
+                'Authorization': f'Bearer {resend_api_key}',
+                'Content-Type': 'application/json'
+            }
+            
+            payload = {
+                "from": "Contact Form <onboarding@resend.dev>",
+                "to": [os.getenv('EMAIL_USER', 'narekmomchyan80@gmail.com')],
+                "subject": f"Tour agency message from {name}",
+                "html": f"<p><strong>Name:</strong> {name}</p><p><strong>Email:</strong> {email}</p><p><strong>Message:</strong><br>{message}</p>",
+                "reply_to": email
+            }
 
             try:
-                send_mail(
-                    subject,
-                    body,
-                    settings.EMAIL_HOST_USER,
-                    [settings.EMAIL_HOST_USER],
-                    fail_silently=False,
-                )
-                return Response({"success": "Your message was sent successfully:"}, status=status.HTTP_200_OK)
+                response = requests.post('https://api.resend.com/emails', headers=headers, json=payload)
+                
+                if response.status_code in [200, 201]:
+                    return Response({"success": "Your message was sent successfully:"}, status=status.HTTP_200_OK)
+                else:
+                    return Response({"error": f"Error sending message: {response.text}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
             
             except Exception as e:
-                return Response({"error": "Error sending message:"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+                return Response({"error": f"Error sending message: {str(e)}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 class AboutVievs(BulkCreateMixin,viewsets.ModelViewSet):
