@@ -196,8 +196,59 @@
   margin: 0;
 }
 
+@media (max-width: 1024px) {
+  .heroInfoContainer {
+    padding: 4rem 1.5rem;
+  }
+  .title {
+    font-size: 2.2rem;
+  }
+  .companiesSection, .whySection {
+    padding: 3rem 1.5rem;
+  }
+  .whyImage {
+    height: 300px;
+  }
+}
+
 @media (max-width: 768px) {
   .whyContent {
     flex-direction: column;
+  }
+  .heroInfoContainer {
+    padding: 3rem 1rem;
+    gap: 1.2rem;
+  }
+  .title {
+    font-size: 1.8rem;
+  }
+  .title img {
+    width: 28px;
+    height: 28px;
+  }
+  .subtitle {
+    font-size: 0.9rem;
+  }
+  .companiesSection, .whySection {
+    padding: 2rem 1rem;
+  }
+  .whyImage {
+    height: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroInfoContainer {
+    padding: 2rem 1rem;
+  }
+  .title {
+    font-size: 1.5rem;
+  }
+  .button {
+    padding: 0.8rem 2rem;
+    font-size: 0.85rem;
+  }
+  .whyImage {
+    height: 200px;
   }
 }

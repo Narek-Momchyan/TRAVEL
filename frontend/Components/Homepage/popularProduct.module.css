@@ -144,4 +144,41 @@
   letter-spacing: 0.05em;
 }
 
+@media (max-width: 1024px) {
+  .section {
+    padding: 4rem 1rem 5rem;
+  }
+  .slide {
+    width: 300px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 2rem 1rem 3rem;
+  }
+  .slide {
+    width: 280px !important;
+  }
+  .imageWrapper {
+    height: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 1.5rem 1rem 2rem;
+  }
+  .slide {
+    width: 240px !important;
+  }
+  .imageWrapper {
+    height: 160px;
+  }
+  .cardBody {
+    padding: 1rem;
+  }
+}
+
+
 

@@ -102,10 +102,22 @@
     background: #1a859c;
 }
 
+@media (max-width: 1024px) {
+    .container {
+        gap: 20px;
+        padding: 30px;
+    }
+}
+
 @media (max-width: 768px) {
     .container {
         flex-direction: column;
         padding: 20px;
+        margin-top: 60px;
+    }
+    .mainImage {
+        height: auto;
+        max-height: 300px;
     }
     .rightColumn {
         flex-direction: row;
@@ -113,8 +125,27 @@
         overflow-y: hidden;
     }
     .thumbnail {
-        width: 150px;
-        height: 100px;
+        width: 120px;
+        height: 80px;
         flex-shrink: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+    }
+    .title {
+        font-size: 22px;
+    }
+    .price {
+        font-size: 20px;
+    }
+    .mainImage {
+        max-height: 250px;
+    }
+    .thumbnail {
+        width: 100px;
+        height: 70px;
     }
 }

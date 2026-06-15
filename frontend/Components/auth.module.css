@@ -168,3 +168,42 @@
     transform: translateY(0);
   }
 }
+
+@media (max-width: 1024px) {
+  .formCard {
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .pageContainer {
+    padding: 1rem;
+    margin-top: 40px;
+  }
+  .formCard {
+    padding: 1.5rem 1.5rem;
+  }
+  .title {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .formCard {
+    padding: 1.5rem 1rem;
+  }
+  .title {
+    font-size: 1.4rem;
+  }
+  .subtitle {
+    font-size: 0.85rem;
+  }
+  .input {
+    padding: 0.7rem 0.8rem;
+    font-size: 0.9rem;
+  }
+  .button {
+    font-size: 0.95rem;
+    padding: 0.8rem;
+  }
+}

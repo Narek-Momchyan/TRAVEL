@@ -109,3 +109,51 @@
   margin: 0;
   font-weight: normal;
 }
+
+@media (max-width: 1024px) {
+  .aboutContent {
+    gap: 40px;
+  }
+  .aboutImages {
+    flex: 0 0 280px;
+  }
+}
+
+@media (max-width: 768px) {
+  .aboutSection, .teamSection {
+    margin: 40px auto;
+  }
+  .aboutContent {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .aboutImages {
+    flex: 1;
+    width: 100%;
+    flex-direction: row;
+    overflow-x: auto;
+  }
+  .aboutImages img {
+    height: 120px;
+    width: auto;
+    min-width: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .aboutSection, .teamSection {
+    margin: 30px auto;
+  }
+  .aboutImages img {
+    height: 100px;
+    min-width: 120px;
+  }
+  .teamGrid {
+    flex-direction: column;
+    align-items: center;
+  }
+  .teamCard {
+    width: 100%;
+    max-width: 280px;
+  }
+}

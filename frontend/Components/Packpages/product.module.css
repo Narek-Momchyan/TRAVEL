@@ -180,3 +180,43 @@
     color: #48aeb6;
     font-weight: bold;
 }
+
+@media (max-width: 1024px) {
+    .gridContainer {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .filterSection {
+        flex-direction: column;
+        gap: 20px;
+        align-items: stretch;
+    }
+    .searchBox {
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .priceFilterBox {
+        justify-content: space-between;
+    }
+    .gridContainer {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .gridContainer {
+        grid-template-columns: 1fr;
+    }
+    .priceFilterBox {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+    .priceInput {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+

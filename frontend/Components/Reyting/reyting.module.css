@@ -87,3 +87,42 @@
   position: relative;
   z-index: 1;
 }
+
+@media (max-width: 1024px) {
+  .reytingContainer {
+    padding: 4rem 1.5rem;
+  }
+  .reytingText {
+    font-size: 1.05rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .reytingContainer {
+    padding: 3rem 1rem;
+  }
+  .quoteIcon {
+    font-size: 3rem;
+  }
+  .reytingText {
+    font-size: 0.95rem;
+  }
+  .star {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .reytingContainer {
+    padding: 2.5rem 1rem;
+  }
+  .quoteIcon {
+    font-size: 2.5rem;
+  }
+  .reytingText {
+    font-size: 0.85rem;
+  }
+  .star {
+    font-size: 1.2rem;
+  }
+}
