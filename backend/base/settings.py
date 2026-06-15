@@ -147,9 +147,13 @@ CORS_ALLOWED_ORIGIN_REGEXES = [
     r"^https://.*\.vercel\.app$",
 ]
 
+
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
+    "https://travel-weld-iota.vercel.app",
+    "https://travel-git-main-narek-momchyans-projects.vercel.app",
+    "https://travel-4k9nupifl-narek-momchyans-projects.vercel.app",
 ]
 
 import os

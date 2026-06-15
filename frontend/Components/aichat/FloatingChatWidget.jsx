@@ -26,12 +26,10 @@ export default function FloatingChatWidget() {
   setIsLoading(true);
 
   try {
-    // Համոզվիր, որ այս անունը ճիշտ է՝ ըստ քո լոգինի ֆունկցիայի
     const token = localStorage.getItem("accessToken"); 
 
-    // Եթե տոկեն չկա, մի՛ ուղարկիր, որպեսզի 401 չստանաս
     if (!token) {
-      setMessages((prev) => [...prev, { id: Date.now() + 1, role: "model", content: "Խնդրում ենք մուտք գործել համակարգ, որպեսզի կարողանաք զրուցել վիրտուալ գիդի հետ։ (Please log in to chat with the virtual guide.)" }]);
+      setMessages((prev) => [...prev, { id: Date.now() + 1, role: "model", }]);
       setIsLoading(false);
       return;
     }
@@ -41,7 +39,6 @@ export default function FloatingChatWidget() {
       session_id: sessionId
     }, {
       headers: {
-        // Համոզվիր, որ 'Bearer' և տոկենի միջև բացատ կա
         "Authorization": `Bearer ${token}`
       }
     });
