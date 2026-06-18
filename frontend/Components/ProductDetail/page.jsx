@@ -5,9 +5,11 @@ import dynamic from 'next/dynamic';
 
 const MapComponent = dynamic(() => import('../Mar/page'), { ssr: false });
 export default function ProductDetails({ item }) {
-    const images = item.images || [];
-    
+    if (!item) {
+        return null;
+    }
 
+    const images = item.images || [];
     const [mainImage, setMainImage] = useState(images[0]);
 
     return (

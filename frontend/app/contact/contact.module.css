@@ -21,7 +21,7 @@
 }
 
 .formCard:hover {
-  transform: translateY(-5px);
+  box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(23, 133, 155, 0.6) inset;
 }
 
 .title {
@@ -202,7 +202,7 @@
   }
   .input {
     padding: 0.7rem 0.8rem;
-    font-size: 0.9rem;
+    font-size: 16px;
   }
   .button {
     font-size: 1rem;

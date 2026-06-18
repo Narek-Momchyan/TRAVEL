@@ -124,19 +124,33 @@
     transition: all 0.3s ease;
 }
 
-.card:hover .bottomBar {
-    background-color: #fff;
-    color: #48aeb6;
-}
-
 .heartIcon {
     font-size: 18px;
     cursor: pointer;
-    transition: transform 0.2s;
+    transition: box-shadow 0.2s, border-color 0.2s;
 }
 
-.heartIcon:hover {
-    transform: scale(1.2);
+@media (hover: hover) {
+    .card:hover .bottomBar {
+        background-color: #fff;
+        color: #48aeb6;
+    }
+
+    .heartIcon:hover {
+        transform: scale(1.2);
+    }
+}
+
+@media (min-width: 769px) {
+    .card:hover .bottomBar {
+        bottom: 0;
+    }
+}
+.card:hover {
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15), 0 0 0 2px #48aeb6;
+}
+.card:hover .productImage {
+    opacity: 0.9;
 }
 
 .title {

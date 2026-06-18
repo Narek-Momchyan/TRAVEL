@@ -40,12 +40,15 @@
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 8px 30px rgba(11, 92, 122, 0.12);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease;
 }
 
 .card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 40px rgba(11, 92, 122, 0.2);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15), 0 0 0 2px #1a859c;
+}
+
+.card:hover .imageWrapper img {
+  opacity: 0.9;
 }
 
 .imageWrapper {

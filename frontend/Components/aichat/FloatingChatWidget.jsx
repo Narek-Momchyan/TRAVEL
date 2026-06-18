@@ -52,7 +52,7 @@ export default function FloatingChatWidget() {
     setMessages(responseData.messages);
 
   } catch (error) {
-    console.error("Chat error:", error);
+   
     if (error.response?.status === 503) {
       alert("AI is temporarily unavailable. Please check the API keys on the server.");
     }
@@ -68,11 +68,11 @@ export default function FloatingChatWidget() {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end font-sans">
+    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end font-sans pointer-events-none">
       
       <div 
         className={`mb-4 w-80 sm:w-96 h-[500px] bg-white rounded-2xl shadow-2xl border border-gray-100 flex flex-col overflow-hidden transition-all duration-300 transform origin-bottom-right ${
-          isOpen ? "scale-100 opacity-100" : "scale-0 opacity-0 pointer-events-none"
+          isOpen ? "scale-100 opacity-100 pointer-events-auto" : "scale-0 opacity-0 pointer-events-none"
         }`}
       >
         <div className="bg-[#1a859c] text-white p-4 flex justify-between items-center shadow-md z-10">
@@ -145,7 +145,7 @@ export default function FloatingChatWidget() {
 
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-14 h-14 bg-[#1a859c] rounded-full flex items-center justify-center text-white shadow-xl hover:bg-[#136b7d] transition-all transform hover:scale-105 active:scale-95"
+        className="pointer-events-auto w-14 h-14 bg-[#1a859c] rounded-full flex items-center justify-center text-white shadow-xl hover:bg-[#136b7d] transition-all transform hover:scale-105 active:scale-95"
         style={{ boxShadow: "0 4px 14px 0 rgba(26, 133, 156, 0.39)" }}
       >
         {isOpen ? (

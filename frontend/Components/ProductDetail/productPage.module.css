@@ -79,8 +79,7 @@
 }
 
 .thumbnail:hover {
-    transform: scale(1.02);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    box-shadow: 0 6px 15px rgba(26, 133, 156, 0.4);
     border-color: #1a859c;
 }
 
@@ -114,15 +113,28 @@
         flex-direction: column;
         padding: 20px;
         margin-top: 60px;
+        gap: 20px;
+    }
+    .leftColumn {
+        display: contents;
     }
     .mainImage {
-        height: auto;
-        max-height: 300px;
+        order: 1;
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
     }
     .rightColumn {
+        order: 2;
         flex-direction: row;
         overflow-x: auto;
         overflow-y: hidden;
+        padding-right: 0;
+        gap: 10px;
+        padding-bottom: 5px;
+    }
+    .infoSection {
+        order: 3;
     }
     .thumbnail {
         width: 120px;

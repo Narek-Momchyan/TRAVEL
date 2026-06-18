@@ -101,10 +101,12 @@
   white-space: nowrap;
 }
 
-.navDropdownItem:hover {
-  background-color: #f4fafb;
-  color: #0b698f;
-  padding-left: 28px;
+@media (min-width: 769px) {
+  .navDropdownItem:hover {
+    background-color: #f4fafb;
+    color: #0b698f;
+    padding-left: 28px;
+  }
 }
 
 .drop_btn {
@@ -173,6 +175,7 @@
   cursor: pointer;
   padding: 0;
   z-index: 1001;
+  position: relative;
 }
 
 .bar {
@@ -242,10 +245,15 @@
     box-shadow: none;
     border: none;
     padding-left: 15px;
+    display: flex;
+    flex-direction: column;
+  }
+  .navDropdown::before {
     display: none;
   }
   .navItemContainer:hover .navDropdown {
     display: flex;
+    transform: none;
   }
   .logoWrapper img {
     height: 40px;

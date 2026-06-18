@@ -2,6 +2,7 @@ import React from 'react';
 import api from '@/lib/api';
 import { getLanguage } from '@/lib/lang';
 import ProductDetails from '@/Components/ProductDetail/page';
+import { notFound } from 'next/navigation';
 
 export const dynamic = 'force-dynamic';
 
@@ -18,6 +19,9 @@ export default async function ProductDetailPage(props) {
         console.error("Error fetching product details:", err);
     }
 
+    if (!productData) {
+        notFound();
+    }
 
     return (
         <div>

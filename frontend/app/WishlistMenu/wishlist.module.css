@@ -94,10 +94,9 @@
 }
 
 .dropdownItem:hover {
-    background: #f2fbff;
-    border-color: #d1f0ff;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 126, 143, 0.08);
+    background: #e6f7ff;
+    border-color: #b3e6ff;
+    box-shadow: 0 4px 12px rgba(0, 126, 143, 0.15);
 }
 
 .itemImage {
