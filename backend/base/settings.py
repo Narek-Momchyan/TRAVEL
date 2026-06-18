@@ -20,10 +20,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-mmzvgjxf5ug63*#0um*%fbpwpu+&usq3eb&07a%%!y$!v5ft#@'
+import os
+from dotenv import load_dotenv
+load_dotenv(override=True)
+
+SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-mmzvgjxf5ug63*#0um*%fbpwpu+&usq3eb&07a%%!y$!v5ft#@')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = ['travel-v8j7.onrender.com', 'localhost', '127.0.0.1']
 
@@ -144,6 +148,7 @@ STATIC_URL = 'static/'
 CORS_ALLOW_ALL_ORIGINS = False  
 
 CORS_ALLOWED_ORIGIN_REGEXES = [
+
     r"^https://.*\.vercel\.app$",
 ]
 
@@ -158,14 +163,12 @@ CORS_ALLOWED_ORIGINS = [
 
 import os
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR
+MEDIA_ROOT = BASE_DIR / 'media'
 
 
 
 import os
-from dotenv import load_dotenv
-
-load_dotenv(override=True)
+# load_dotenv is now imported and called at the top of the file.
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'

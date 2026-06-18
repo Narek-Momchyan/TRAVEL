@@ -14,6 +14,22 @@ from django.contrib.auth import authenticate
 from .models import Customer, OTPVerification
 from .serializers import RegisterSerializer, OTPVerifySerializer, LoginSerializer, AddressSerializer, ProfileSerializer
 from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
+import threading
+
+def send_otp_email(user, otp_code):
+    try:
+        if user.email:
+            send_mail(
+                subject='Confirm your registration',
+                message=f'Hello {user.username},\n\nYour verification code is: {otp_code}\nThe code is valid for 5 minutes.',
+                from_email=settings.EMAIL_HOST_USER,
+                recipient_list=[user.email],
+                fail_silently=False, 
+            )
+    except Exception as e:
+        print(f"Failed to send email to {user.email}: {e}")
+        # Delete user if email fails so they can try again
+        user.delete()
 
 class RegisterView(APIView):
     permission_classes = [AllowAny]
@@ -27,22 +43,8 @@ class RegisterView(APIView):
             OTPVerification.objects.filter(user=user).delete()
             OTPVerification.objects.create(user=user, otp_code=otp_code)
             
-            try:
-                if user.email:
-                    send_mail(
-                        subject='Confirm your registration',
-                        message=f'Hello {user.username},\n\nYour verification code is: {otp_code}\nThe code is valid for 5 minutes.',
-                        from_email=settings.EMAIL_HOST_USER,
-                        recipient_list=[user.email],
-                        fail_silently=False, 
-                    )
-
-            except Exception as e:
-                user.delete()
-                return Response(
-                    {"error": f"Failed to send code: Details: {str(e)}"}, 
-                    status=status.HTTP_500_INTERNAL_SERVER_ERROR
-                )
+            # Send email in background to prevent blocking and make request faster
+            threading.Thread(target=send_otp_email, args=(user, otp_code)).start()
 
             return Response(
                 {"message": "Code sent successfully. Please confirm."}, 

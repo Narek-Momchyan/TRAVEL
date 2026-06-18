@@ -72,7 +72,7 @@ class LanguagesViewSet(BulkCreateMixin, viewsets.ModelViewSet):
 
 
 class NavbarViewSet(BulkCreateMixin, viewsets.ModelViewSet):
-    queryset = Navbar.objects.all().order_by('id')
+    queryset = Navbar.objects.prefetch_related('dropdown').all().order_by('id')
     serializer_class = NavbarSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['lang']
@@ -86,7 +86,7 @@ class HeroInfoViewSet(BulkCreateMixin, viewsets.ModelViewSet):
 
 
 class ProductViewSet(BulkCreateMixin, viewsets.ModelViewSet):
-    queryset = product.objects.all().order_by('-id')
+    queryset = product.objects.prefetch_related('images').all().order_by('-id')
     serializer_class = TourPackageSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_class = TourPackageFilter
@@ -99,7 +99,7 @@ class ProductViewSet(BulkCreateMixin, viewsets.ModelViewSet):
 
 
 class PopularItemsViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = product.objects.filter(is_popular=True).order_by('id')
+    queryset = product.objects.prefetch_related('images').filter(is_popular=True).order_by('id')
     serializer_class = TourPackageSerializer
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
     filterset_fields = ['lang']
@@ -164,6 +164,7 @@ class ContactViewSet(viewsets.ViewSet):
         if serializer.is_valid():
             import requests
             import os
+            import threading
             
             name = serializer.validated_data['name']
             email = serializer.validated_data['email']
@@ -187,16 +188,15 @@ class ContactViewSet(viewsets.ViewSet):
                 "reply_to": email
             }
 
-            try:
-                response = requests.post('https://api.resend.com/emails', headers=headers, json=payload)
-                
-                if response.status_code in [200, 201]:
-                    return Response({"success": "Your message was sent successfully:"}, status=status.HTTP_200_OK)
-                else:
-                    return Response({"error": f"Error sending message: {response.text}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            def send_contact_email(headers, payload):
+                try:
+                    requests.post('https://api.resend.com/emails', headers=headers, json=payload)
+                except Exception as e:
+                    print(f"Failed to send contact email from {email}: {e}")
+
+            threading.Thread(target=send_contact_email, args=(headers, payload)).start()
             
-            except Exception as e:
-                return Response({"error": f"Error sending message: {str(e)}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return Response({"success": "Your message was sent successfully:"}, status=status.HTTP_200_OK)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 class AboutVievs(BulkCreateMixin,viewsets.ModelViewSet):
