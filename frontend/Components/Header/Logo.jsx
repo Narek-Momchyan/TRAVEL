@@ -5,7 +5,7 @@ import Link from 'next/link'
 export default function Logo({logo}) {
   return (
     <div className={style.logoWrapper}>
-      <Link href="/"><img src={logo?.img_route} alt={logo?.logo_route} /></Link>
+      <Link href="/" className='cursor-pointer'><img src={logo?.img_route} alt={logo?.logo_route} /></Link>
       
     </div>
   )
