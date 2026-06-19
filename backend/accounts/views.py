@@ -15,7 +15,9 @@ from .models import Customer, OTPVerification
 from .serializers import RegisterSerializer, OTPVerifySerializer, LoginSerializer, AddressSerializer, ProfileSerializer
 from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 import threading
+import logging
 
+logger = logging.getLogger(__name__)
 def send_otp_email(user, otp_code):
     try:
         if user.email:
@@ -27,8 +29,7 @@ def send_otp_email(user, otp_code):
                 fail_silently=False, 
             )
     except Exception as e:
-        print(f"Failed to send email to {user.email}: {e}")
-        # Delete user if email fails so they can try again
+        logger.error(f"Failed to send email to {user.email}: {e}")
         user.delete()
 
 class RegisterView(APIView):
@@ -43,11 +44,9 @@ class RegisterView(APIView):
             OTPVerification.objects.filter(user=user).delete()
             OTPVerification.objects.create(user=user, otp_code=otp_code)
             
-            # Send email in background to prevent blocking and make request faster
             threading.Thread(target=send_otp_email, args=(user, otp_code)).start()
 
             return Response(
-                {"message": "Code sent successfully. Please confirm."}, 
                 status=status.HTTP_201_CREATED
             )
             

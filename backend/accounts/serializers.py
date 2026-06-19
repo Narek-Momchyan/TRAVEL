@@ -15,7 +15,7 @@ class RegisterSerializer(serializers.ModelSerializer):
 
     def validate(self, data):
         if not data.get('email'):
-            raise serializers.ValidationError({"error": "Անհրաժեշտ է տրամադրել էլ. փոստ:"})
+            raise serializers.ValidationError({"error": "not email"})
         return data
 
     def create(self, validated_data):
@@ -34,7 +34,7 @@ class OTPVerifySerializer(serializers.Serializer):
 
     def validate(self, data):
         if not data.get('email'):
-            raise serializers.ValidationError({"error": "Անհրաժեշտ է տրամադրել էլ. փոստ:"})
+            raise serializers.ValidationError({"error": "email should be a valid email"})
         return data
 
 
