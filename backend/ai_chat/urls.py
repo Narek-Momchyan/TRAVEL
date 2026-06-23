@@ -1,8 +1,8 @@
 from django.urls import path
-from .views import ChatInteractionView
+from .views import ChatHistoryView
 
 app_name = 'ai_chat'
 
 urlpatterns = [
-    path('interact/', ChatInteractionView.as_view(), name='interact'),
+    path('history/', ChatHistoryView.as_view(), name='chat-history'),
 ]

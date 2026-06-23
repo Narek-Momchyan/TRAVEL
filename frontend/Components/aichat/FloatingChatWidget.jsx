@@ -9,57 +9,87 @@ export default function FloatingChatWidget() {
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [sessionId, setSessionId] = useState(null);
-  
+
   const messagesEndRef = useRef(null);
+  const wsRef = useRef(null);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isOpen]);
 
- const sendMessage = async () => {
-  if (!inputValue.trim()) return;
+  useEffect(() => {
+    const token = localStorage.getItem("accessToken");
+    if (!token) return;
 
-  const userMessageText = inputValue;
-  setInputValue("");
-
-  setMessages((prev) => [...prev, { id: Date.now(), role: "user", content: userMessageText }]);
-  setIsLoading(true);
-
-  try {
-    const token = localStorage.getItem("accessToken"); 
-
-    if (!token) {
-      setMessages((prev) => [...prev, { id: Date.now() + 1, role: "model", }]);
-      setIsLoading(false);
-      return;
-    }
-
-    const response = await api.post("interact/", {
-      message: userMessageText,
-      session_id: sessionId
-    }, {
-      headers: {
-        "Authorization": `Bearer ${token}`
+    const fetchHistory = async () => {
+      try {
+        const response = await api.get("history/", {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        if (response.data.length > 0) {
+          const lastSession = response.data[0];
+          setSessionId(lastSession.id);
+          setMessages(lastSession.messages);
+        }
+      } catch (error) {
+        alert("Error fetching history:", error);
       }
-    });
+    };
 
-    const responseData = response.data;
-    
-    if (!sessionId) {
-      setSessionId(responseData.id);
+    fetchHistory();
+
+    const wsUrl = `${process.env.NEXT_PUBLIC_WS_URL}?token=${token}`;
+    const socket = new WebSocket(wsUrl);
+    wsRef.current = socket;
+
+    socket.onmessage = (event) => {
+      const data = JSON.parse(event.data);
+      
+      if (data.error) {
+        alert(data.error);
+        setIsLoading(false);
+        return;
+      }
+
+      if (data.role === "model") {
+        setMessages((prev) => [
+          ...prev, 
+          { id: Date.now(), role: "model", content: data.content }
+        ]);
+        if (data.session_id) {
+          setSessionId(data.session_id);
+        }
+        setIsLoading(false);
+      }
+    };
+
+    return () => {
+      socket.close();
+    };
+  }, []);
+
+  const sendMessage = () => {
+    if (!inputValue.trim()) return;
+
+    const userMessageText = inputValue;
+    setInputValue("");
+
+    setMessages((prev) => [
+      ...prev, 
+      { id: Date.now(), role: "user", content: userMessageText }
+    ]);
+    setIsLoading(true);
+
+    if (wsRef.current && wsRef.current.readyState === WebSocket.OPEN) {
+      wsRef.current.send(JSON.stringify({
+        message: userMessageText,
+        session_id: sessionId
+      }));
+    } else {
+      alert("No connection to the server.");
+      setIsLoading(false);
     }
-
-    setMessages(responseData.messages);
-
-  } catch (error) {
-   
-    if (error.response?.status === 503) {
-      alert("AI is temporarily unavailable. Please check the API keys on the server.");
-    }
-  } finally {
-    setIsLoading(false);
-  }
-};
+  };
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {

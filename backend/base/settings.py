@@ -31,10 +31,12 @@ DEBUG = os.getenv('DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = ['travel-v8j7.onrender.com', 'localhost', '127.0.0.1']
 
-
+ASGI_APPLICATION = 'base.asgi.application'
 # Application definition
 AUTH_USER_MODEL = 'accounts.Customer'
 INSTALLED_APPS = [
+    'channels',
+    'daphne',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
