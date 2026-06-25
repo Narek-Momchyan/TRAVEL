@@ -202,7 +202,6 @@ class AuthTranslation(models.Model):
     add_address_title = models.CharField(max_length=100, default="Add Your Address")
     add_address_subtitle = models.CharField(max_length=200, default="Where should we send your bookings?")
     
-    # Labels
     email_username_label = models.CharField(max_length=100, default="Email or Username")
     password_label = models.CharField(max_length=50, default="Password")
     username_label = models.CharField(max_length=50, default="Username *")
@@ -213,14 +212,13 @@ class AuthTranslation(models.Model):
     postal_code_label = models.CharField(max_length=50, default="Postal Code / Zip")
     code_label = models.CharField(max_length=50, default="6-Digit Code")
     
-    # Buttons
+
     signin_btn = models.CharField(max_length=50, default="Sign In")
     signup_btn = models.CharField(max_length=50, default="Continue to Verification")
     verify_btn = models.CharField(max_length=50, default="Verify & Continue")
     skip_btn = models.CharField(max_length=50, default="Skip for now")
     save_profile_btn = models.CharField(max_length=50, default="Save Profile")
     
-    # AuthForm Messages & Labels
     err_fill_email_or_phone = models.CharField(max_length=200, default="Please fill in either email or phone number.")
     msg_code_sent = models.CharField(max_length=200, default="Code sent. Please verify.")
     err_registration_failed = models.CharField(max_length=200, default="Registration error. Data might already be in use.")
@@ -268,4 +266,4 @@ class Favorite(models.Model):
         unique_together = ('user', 'product')
 
     def __str__(self):
-        return f"{self.user} likes {self.product}"
+        return f"{self.user} likes {self.product}"

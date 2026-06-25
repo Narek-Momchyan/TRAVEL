@@ -8,10 +8,12 @@ from rest_framework.permissions import IsAuthenticated
 from django.shortcuts import get_object_or_404
 from rest_framework.permissions import AllowAny
 
+from .tasks import send_contact_email_task
+
 from .filters import TourPackageFilter
 from .models import (
     Logo, Navbar, Dropdown, Languages, Homeimg, Hero_info,
-    product, TourImage, Rating, compaines, MainTitle, Item, SectionImage,
+    product,Rating, compaines, MainTitle, Item, SectionImage,
     About, myTeam, footer, ProfileTranslation, AuthTranslation, Favorite
 )
 from .serializers import (
@@ -161,42 +163,18 @@ class ContactViewSet(viewsets.ViewSet):
 
     def create(self, request):
         serializer = ContactSerializer(data=request.data)
+        
         if serializer.is_valid():
-            import requests
-            import os
-            import threading
-            
             name = serializer.validated_data['name']
             email = serializer.validated_data['email']
             message = serializer.validated_data['message']
             
-            resend_api_key = os.getenv('RESEND_API_KEY')
+            send_contact_email_task.delay(name, email, message)
             
-            if not resend_api_key:
-                return Response({"error": "Resend API key is missing. Please configure it in .env"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
-            headers = {
-                'Authorization': f'Bearer {resend_api_key}',
-                'Content-Type': 'application/json'
-            }
-            
-            payload = {
-                "from": "Contact Form <onboarding@resend.dev>",
-                "to": ["narekmomchyan80@gmail.com"],
-                "subject": f"Tour agency message from {name}",
-                "html": f"<p><strong>Name:</strong> {name}</p><p><strong>Email:</strong> {email}</p><p><strong>Message:</strong><br>{message}</p>",
-                "reply_to": email
-            }
-
-            def send_contact_email(headers, payload):
-                try:
-                    requests.post('https://api.resend.com/emails', headers=headers, json=payload)
-                except Exception as e:
-                    print(f"Failed to send contact email from {email}: {e}")
-
-            threading.Thread(target=send_contact_email, args=(headers, payload)).start()
-            
-            return Response({"success": "Your message was sent successfully:"}, status=status.HTTP_200_OK)
+            return Response(
+                {"success": "Your message was sent successfully"}, 
+                status=status.HTTP_200_OK
+            )
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 class AboutVievs(BulkCreateMixin,viewsets.ModelViewSet):

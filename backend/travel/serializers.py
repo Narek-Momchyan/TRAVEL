@@ -2,7 +2,7 @@ from codecs import __all__
 from rest_framework import serializers
 from .models import (
     Logo, Navbar, Dropdown, Languages, Homeimg, Hero_info,
-    product, TourImage, Rating, compaines, MainTitle, Item, SectionImage,
+    product, Rating, compaines, MainTitle, Item, SectionImage,
     About, myTeam, footer, ProfileTranslation, AuthTranslation
 )
 
@@ -142,4 +142,4 @@ class FavoriteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Favorite
         fields = ['id', 'user', 'product', 'product_details', 'created_at']
-        read_only_fields = ['user', 'created_at']
+        read_only_fields = ['user', 'created_at']

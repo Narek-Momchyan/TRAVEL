@@ -19,6 +19,8 @@ tzdata = "==2026.2"
 urllib3 = "==2.7.0"
 djangorestframework-simplejwt = "*"
 transliterate = "*"
+celery = "*"
+redis = "*"
 
 [dev-packages]
 

@@ -9,6 +9,7 @@ export default function FloatingChatWidget() {
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [sessionId, setSessionId] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const messagesEndRef = useRef(null);
   const wsRef = useRef(null);
@@ -19,7 +20,11 @@ export default function FloatingChatWidget() {
 
   useEffect(() => {
     const token = localStorage.getItem("accessToken");
-    if (!token) return;
+    if (!token) {
+      setIsAuthenticated(false);
+      return;
+    }
+    setIsAuthenticated(true);
 
     const fetchHistory = async () => {
       try {
@@ -32,7 +37,13 @@ export default function FloatingChatWidget() {
           setMessages(lastSession.messages);
         }
       } catch (error) {
-        alert("Error fetching history:", error);
+        console.error("Error fetching history:", error);
+        if (error.response?.status === 401) {
+            setIsAuthenticated(false);
+            localStorage.removeItem("accessToken");
+            localStorage.removeItem("refreshToken");
+            window.location.href = "/register";
+        }
       }
     };
 
@@ -44,7 +55,7 @@ export default function FloatingChatWidget() {
 
     socket.onmessage = (event) => {
       const data = JSON.parse(event.data);
-      
+
       if (data.error) {
         alert(data.error);
         setIsLoading(false);
@@ -53,7 +64,7 @@ export default function FloatingChatWidget() {
 
       if (data.role === "model") {
         setMessages((prev) => [
-          ...prev, 
+          ...prev,
           { id: Date.now(), role: "model", content: data.content }
         ]);
         if (data.session_id) {
@@ -75,7 +86,7 @@ export default function FloatingChatWidget() {
     setInputValue("");
 
     setMessages((prev) => [
-      ...prev, 
+      ...prev,
       { id: Date.now(), role: "user", content: userMessageText }
     ]);
     setIsLoading(true);
@@ -99,11 +110,10 @@ export default function FloatingChatWidget() {
 
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end font-sans pointer-events-none">
-      
-      <div 
-        className={`mb-4 w-80 sm:w-96 h-[500px] bg-white rounded-2xl shadow-2xl border border-gray-100 flex flex-col overflow-hidden transition-all duration-300 transform origin-bottom-right ${
-          isOpen ? "scale-100 opacity-100 pointer-events-auto" : "scale-0 opacity-0 pointer-events-none"
-        }`}
+
+      <div
+        className={`mb-4 w-80 sm:w-96 h-[500px] bg-white rounded-2xl shadow-2xl border border-gray-100 flex flex-col overflow-hidden transition-all duration-300 transform origin-bottom-right ${isOpen ? "scale-100 opacity-100 pointer-events-auto" : "scale-0 opacity-0 pointer-events-none"
+          }`}
       >
         <div className="bg-[#1a859c] text-white p-4 flex justify-between items-center shadow-md z-10">
           <div className="flex items-center gap-2">
@@ -121,20 +131,23 @@ export default function FloatingChatWidget() {
         </div>
 
         <div className="flex-1 p-4 overflow-y-auto bg-gray-50 flex flex-col gap-3">
-          {messages.length === 0 && (
+          {!isAuthenticated ? (
+            <div className="text-center text-red-500 text-sm mt-10 p-4 bg-red-50 rounded-lg border border-red-100">
+              Please log in to use the AI Tour Guide.
+            </div>
+          ) : messages.length === 0 && (
             <div className="text-center text-gray-400 text-sm mt-10">
-              Start a conversation...
+              conversation...
             </div>
           )}
-          
+
           {messages.map((msg) => (
             <div key={msg.id} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
-              <div 
-                className={`max-w-[80%] p-3 rounded-2xl text-sm ${
-                  msg.role === "user" 
-                    ? "bg-[#1a859c] text-white rounded-br-none" 
+              <div
+                className={`max-w-[80%] p-3 rounded-2xl text-sm ${msg.role === "user"
+                    ? "bg-[#1a859c] text-white rounded-br-none"
                     : "bg-white border border-gray-200 text-gray-800 rounded-bl-none shadow-sm"
-                }`}
+                  }`}
               >
                 {msg.content}
               </div>
@@ -154,21 +167,21 @@ export default function FloatingChatWidget() {
         </div>
 
         <div className="p-3 bg-white border-t border-gray-100 flex items-center gap-2">
-          <input 
-            type="text" 
+          <input
+            type="text"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder="Type your message..." 
-            disabled={isLoading}
+            placeholder={isAuthenticated ? "Type your message..." : "Please log in..."}
+            disabled={isLoading || !isAuthenticated}
             className="flex-1 p-2 bg-gray-100 border-transparent rounded-xl focus:outline-none focus:ring-2 focus:ring-[#1a859c] text-sm transition-all disabled:opacity-50"
           />
-          <button 
+          <button
             onClick={sendMessage}
-            disabled={isLoading || !inputValue.trim()}
+            disabled={isLoading || !inputValue.trim() || !isAuthenticated}
             className="bg-[#1a859c] text-white p-2 rounded-xl w-10 h-10 flex justify-center items-center hover:bg-[#136b7d] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
-             ➤
+            ➤
           </button>
         </div>
       </div>
@@ -186,7 +199,7 @@ export default function FloatingChatWidget() {
           </svg>
         )}
       </button>
-      
+
     </div>
   );
 }
