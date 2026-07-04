@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     "accounts.apps.AccountsConfig",
     "ai_chat.apps.AiChatConfig",
+
 ]
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -69,8 +70,8 @@ REST_FRAMEWORK = {
         'user': '10000/minute',
         'ai_chat_limit': '5/minute' 
     },
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10,
+
+
 }
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
