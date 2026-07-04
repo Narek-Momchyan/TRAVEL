@@ -68,7 +68,9 @@ REST_FRAMEWORK = {
         'anon': '10000/minute',
         'user': '10000/minute',
         'ai_chat_limit': '5/minute' 
-    }
+    },
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10,
 }
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
