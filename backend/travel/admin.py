@@ -1,6 +1,7 @@
 # pyrefly: ignore [missing-import]
 from django.contrib import admin
-from .models import Logo , Navbar , Dropdown , Languages , Homeimg , Hero_info , product , TourImage , Rating , compaines , MainTitle , Item , SectionImage , About , myTeam , footer, ProfileTranslation
+from .models import Logo , Navbar , Dropdown , Languages , Homeimg , Hero_info , product , TourImage , Rating , compaines , MainTitle , Item , SectionImage , About , myTeam , footer, ProfileTranslation, AuthTranslation, Favorite
+
 
 admin.site.register(Logo)
 admin.site.register(Navbar)
@@ -19,3 +20,5 @@ admin.site.register(About)
 admin.site.register(myTeam)
 admin.site.register(footer)
 admin.site.register(ProfileTranslation)
+admin.site.register(AuthTranslation)
+admin.site.register(Favorite)

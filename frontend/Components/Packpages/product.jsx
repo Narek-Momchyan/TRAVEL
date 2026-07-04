@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import styles from './product.module.css'; 
 import { FaSearch } from 'react-icons/fa'; 
 import { IoIosHeart } from "react-icons/io"; 
+
 import { useWishlist } from '@/context/wishlistcontext';
 export default function Product({ products }) {
 

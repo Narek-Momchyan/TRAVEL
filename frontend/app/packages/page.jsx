@@ -5,6 +5,7 @@ import { getLanguage } from '@/lib/lang'
 import Product from '@/Components/Packpages/product'
 import PopularProduct from '@/Components/Homepage/popularProduct'
 import Reyting from '@/Components/Reyting'
+import Pagination from '@/Components/Packpages/pagejination'
 export default async function Index(props) {
   const searchParams = await props.searchParams;
   const lang = await getLanguage();
@@ -13,8 +14,8 @@ export default async function Index(props) {
   const minPrice = searchParams?.min_price || '';
   const maxPrice = searchParams?.max_price || '';
 
-
-  let productsEndpoint = `products/?lang=${lang}`;
+  let page = searchParams?.page || 1;
+  let productsEndpoint = `products/?lang=${lang}&page=${page}`;
   if (searchQuery) {
     productsEndpoint += `&search=${searchQuery}`;
   }
@@ -31,8 +32,10 @@ export default async function Index(props) {
   return (
     <div>
       <PageBanner title="packages" />
-      <Product products={resdata.data} />
-      <Reyting />
+      <Product products={resdata.data.results} />
+      <Pagination totalItems={resdata.data.count || 0} 
+   pageSize={10} />
+      <Reyting /> 
       <PopularProduct products={respopular.data} />
 
     </div>

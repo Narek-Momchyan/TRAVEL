@@ -7,7 +7,7 @@ from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
 from django.shortcuts import get_object_or_404
 from rest_framework.permissions import AllowAny
-
+from rest_framework.pagination import PageNumberPagination
 from .tasks import send_contact_email_task
 
 from .filters import TourPackageFilter
@@ -87,12 +87,19 @@ class HeroInfoViewSet(BulkCreateMixin, viewsets.ModelViewSet):
     filterset_fields = ['lang']
 
 
+class ProductPagination(PageNumberPagination):
+    page_size = 10 
+    page_query_param = 'page'
+    page_size_query_param = 'page_size'
+    max_page_size = 100 
+
 class ProductViewSet(BulkCreateMixin, viewsets.ModelViewSet):
     queryset = product.objects.prefetch_related('images').all().order_by('-id')
     serializer_class = TourPackageSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_class = TourPackageFilter
-
+    pagination_class = ProductPagination
+    
     def filter_queryset(self, queryset):
         if self.action == 'retrieve':
             return queryset
