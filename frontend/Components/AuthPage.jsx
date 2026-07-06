@@ -17,7 +17,6 @@ const AuthPage = () => {
 
   const [translations, setTranslations] = useState(null);
 
-  // Client-side cookie կարդալու ֆունկցիա (ապահով է SSR-ի դեպքում)
   const getCookie = (name) => {
     if (typeof document === 'undefined') return null;
     const value = `; ${document.cookie}`;
@@ -27,10 +26,9 @@ const AuthPage = () => {
   };
 
   useEffect(() => {
-    // Տոկենը ստուգում ենք localStorage-ից, քանի որ պահպանում ենք այնտեղ
     const token = localStorage.getItem('accessToken');
     if (token) {
-      router.push('/profile'); // window.location.href-ի փոխարեն
+      router.push('/profile'); 
     }
 
     const fetchTranslations = async () => {
@@ -98,7 +96,7 @@ const AuthPage = () => {
         window.dispatchEvent(new Event('authChange'));
         setSuccessMsg('Successfully logged in! Redirecting...');
         setTimeout(() => {
-          router.push('/'); // window.location.href-ի փոխարեն
+          router.push('/'); 
         }, 1500);
       }
     } catch (err) {
