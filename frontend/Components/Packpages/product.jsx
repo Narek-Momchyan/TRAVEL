@@ -88,7 +88,10 @@ export default function Product({ products }) {
                                     <IoIosHeart 
                                         className={styles.heartIcon} 
                                         color={isLiked ? 'red' : ''} 
-                                        onClick={() => toggleLiked(items)}
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            toggleLiked(items);
+                                        }}
                                     />
                                     <span className={styles.title}>{items.title}</span>
                                 </div>

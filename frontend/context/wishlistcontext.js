@@ -1,15 +1,19 @@
 "use client"
-import {createContext, useEffect, useState, useContext} from "react"
+import { createContext, useEffect, useState, useContext, useRef } from "react"
+import { usePathname } from "next/navigation"
 import api from "@/lib/api"
 
 const WishlistContex = createContext();
 
-export function WishlistProvider({children}) {
+export function WishlistProvider({ children }) {
     const [wishlist, setWishlist] = useState([])
     const [isLoading, setIsloading] = useState(true)
+    const pathname = usePathname();
+    const prevToken = useRef(undefined);
 
-    useEffect(() => {
+    const fetchWishlist = () => {
         const token = localStorage.getItem('accessToken');
+        
         if (token) {
             api.get('favorites/', {
                 headers: { Authorization: `Bearer ${token}` }
@@ -19,10 +23,6 @@ export function WishlistProvider({children}) {
                 setWishlist(products);
             }).catch(err => {
                 console.error("Failed to fetch favorites", err);
-                const sawedwishlist = localStorage.getItem("user_wishlist");
-                if (sawedwishlist) {
-                    setWishlist(JSON.parse(sawedwishlist));
-                }
             }).finally(() => {
                 setIsloading(false);
             });
@@ -30,10 +30,26 @@ export function WishlistProvider({children}) {
             const sawedwishlist = localStorage.getItem("user_wishlist")
             if (sawedwishlist) {
                 setWishlist(JSON.parse(sawedwishlist))
+            } else {
+                setWishlist([]);
             }
             setIsloading(false)
         }
-    }, [])
+    };
+
+    useEffect(() => {
+        fetchWishlist();
+
+        const handleAuthChange = () => {
+            fetchWishlist();
+        };
+
+        window.addEventListener('authChange', handleAuthChange);
+        
+        return () => {
+            window.removeEventListener('authChange', handleAuthChange);
+        };
+    }, []);
 
     useEffect(() => {
         if (!isLoading) {
@@ -64,7 +80,7 @@ export function WishlistProvider({children}) {
     }
 
     return (
-        <WishlistContex.Provider value={{wishlist, toogletitem, isLoading}}>
+        <WishlistContex.Provider value={{ wishlist, toogletitem, isLoading }}>
             {children}
         </WishlistContex.Provider>
     )

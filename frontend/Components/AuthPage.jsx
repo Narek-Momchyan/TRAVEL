@@ -95,6 +95,7 @@ const AuthPage = () => {
       if (response.status === 200) {
         localStorage.setItem('accessToken', response.data.tokens.access);
         localStorage.setItem('refreshToken', response.data.tokens.refresh);
+        window.dispatchEvent(new Event('authChange'));
         setSuccessMsg('Successfully logged in! Redirecting...');
         setTimeout(() => {
           router.push('/'); // window.location.href-ի փոխարեն

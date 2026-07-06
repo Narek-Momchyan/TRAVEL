@@ -7,13 +7,19 @@ import style from './header.module.css';
 
 export default function AuthButtons() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const pathname = require('next/navigation').usePathname();
+  const prevToken = React.useRef(undefined);
+
+  const checkLogin = () => {
+    const token = localStorage.getItem('accessToken');
+    setIsLoggedIn(!!token);
+  };
 
   useEffect(() => {
-    // Check if user is logged in
-    const token = localStorage.getItem('accessToken');
-    if (token) {
-      setIsLoggedIn(true);
-    }
+    checkLogin();
+    
+    window.addEventListener('authChange', checkLogin);
+    return () => window.removeEventListener('authChange', checkLogin);
   }, []);
 
   const handleLogout = (e) => {
@@ -22,6 +28,7 @@ export default function AuthButtons() {
     localStorage.removeItem('refreshToken');
     localStorage.removeItem('user_wishlist');
     setIsLoggedIn(false);
+    window.dispatchEvent(new Event('authChange'));
     window.location.replace('/');
   };
 
