@@ -35,6 +35,7 @@ ASGI_APPLICATION = 'base.asgi.application'
 # Application definition
 AUTH_USER_MODEL = 'accounts.Customer'
 INSTALLED_APPS = [
+    'unfold',
     'channels',
     'daphne',
     'django.contrib.admin',
@@ -70,6 +71,9 @@ REST_FRAMEWORK = {
         'user': '10000/minute',
         'ai_chat_limit': '5/minute' 
     },
+   
+
+
 
 
 }

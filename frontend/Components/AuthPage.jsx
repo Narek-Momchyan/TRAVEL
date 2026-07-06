@@ -3,10 +3,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import api from '@/lib/api';
+import { useRouter } from 'next/navigation'; // Ավելացրել ենք useRouter
 
 const AuthPage = () => {
+  const router = useRouter(); // Նախաստեղծում ենք router-ը
+
   const [isLogin, setIsLogin] = useState(true);
-  
   const [step, setStep] = useState(1); 
   
   const [loading, setLoading] = useState(false);
@@ -15,20 +17,24 @@ const AuthPage = () => {
 
   const [translations, setTranslations] = useState(null);
 
+  // Client-side cookie կարդալու ֆունկցիա (ապահով է SSR-ի դեպքում)
+  const getCookie = (name) => {
+    if (typeof document === 'undefined') return null;
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    return null;
+  };
+
   useEffect(() => {
+    // Տոկենը ստուգում ենք localStorage-ից, քանի որ պահպանում ենք այնտեղ
     const token = localStorage.getItem('accessToken');
     if (token) {
-      window.location.href = '/profile';
+      router.push('/profile'); // window.location.href-ի փոխարեն
     }
 
     const fetchTranslations = async () => {
       try {
-        const getCookie = (name) => {
-          const value = `; ${document.cookie}`;
-          const parts = value.split(`; ${name}=`);
-          if (parts.length === 2) return parts.pop().split(';').shift();
-          return null;
-        };
         const lang = getCookie('lang') || 'en';
         const res = await api.get(`auth-translations/?lang=${lang}`);
         if (res.data && res.data.length > 0) {
@@ -39,7 +45,7 @@ const AuthPage = () => {
       }
     };
     fetchTranslations();
-  }, []);
+  }, [router]);
 
   const [formData, setFormData] = useState({
     login: '', username: '', email: '', password: '', otp_code: '',
@@ -91,7 +97,7 @@ const AuthPage = () => {
         localStorage.setItem('refreshToken', response.data.tokens.refresh);
         setSuccessMsg('Successfully logged in! Redirecting...');
         setTimeout(() => {
-          window.location.href = '/';
+          router.push('/'); // window.location.href-ի փոխարեն
         }, 1500);
       }
     } catch (err) {
@@ -177,7 +183,7 @@ const AuthPage = () => {
 
       if (response.status === 200 || response.status === 201) {
         setSuccessMsg('Profile completed successfully! Redirecting...');
-        setTimeout(() => { window.location.href = '/'; }, 1500);
+        setTimeout(() => { router.push('/'); }, 1500);
       }
     } catch (err) {
       setError(parseError(err));
@@ -187,10 +193,12 @@ const AuthPage = () => {
   };
 
   const handleSkip = () => {
-      window.location.href = '/';
+      router.push('/');
   };
 
   if (!translations) return null; 
+
+ 
 
   return (
     <div className="min-h-screen mt-20 flex items-center justify-center bg-gray-50 px-4 py-12 sm:px-6 lg:px-8 font-sans">

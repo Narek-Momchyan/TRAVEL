@@ -1,5 +1,15 @@
 from django.contrib import admin
 from .models import ChatSession, ChatMessage
+from unfold.admin import ModelAdmin
 
-admin.site.register(ChatSession)
-admin.site.register(ChatMessage)
+
+models_to_register=[
+    ChatSession, ChatMessage
+]
+
+for model in models_to_register:
+    admin.site.register(model, ModelAdmin)
+
+
+
+
