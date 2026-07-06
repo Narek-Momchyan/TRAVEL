@@ -22,12 +22,12 @@
 }
 
 .heartIcon {
-    color: #007E8F;   
+    color: #0369a1;   
     transition: color 0.2s;
 }
 
 .heartIcon:hover {
-    color: #005f6b;
+    color: #0369a1;
 }
 
 .badge {
@@ -94,9 +94,9 @@
 }
 
 .dropdownItem:hover {
-    background: #e6f7ff;
-    border-color: #b3e6ff;
-    box-shadow: 0 4px 12px rgba(0, 126, 143, 0.15);
+    background: #f8fafc;
+    border-color: #bae6fd;
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.15);
 }
 
 .itemImage {
@@ -127,5 +127,5 @@
 .itemPrice {
     font-size: 13px;
     font-weight: 700;
-    color: #007E8F;
+    color: #0369a1;
 }

@@ -28,23 +28,23 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
-    background: #f9fdfd;
+    background: #f8fafc;
     padding: 25px;
     border-radius: 12px;
-    border: 1px solid #e0f2f5;
+    border: 1px solid #f1f5f9;
 }
 
 .title {
     font-size: 28px;
     font-weight: bold;
-    color: #1a859c;
+    color: #0369a1;
     margin: 0;
 }
 
 .price {
     font-size: 24px;
     font-weight: bold;
-    color: #e65a5a;
+    color: #ef4444;
     margin: 0;
 }
 
@@ -79,8 +79,8 @@
 }
 
 .thumbnail:hover {
-    box-shadow: 0 6px 15px rgba(26, 133, 156, 0.4);
-    border-color: #1a859c;
+    box-shadow: 0 6px 15px rgba(14, 165, 233, 0.4);
+    border-color: #0369a1;
 }
 
 .rightColumn::-webkit-scrollbar {
@@ -93,12 +93,12 @@
 }
 
 .rightColumn::-webkit-scrollbar-thumb {
-    background: #c1d5d9;
+    background: #cbd5e1;
     border-radius: 4px;
 }
 
 .rightColumn::-webkit-scrollbar-thumb:hover {
-    background: #1a859c;
+    background: #0ea5e9;
 }
 
 @media (max-width: 1024px) {

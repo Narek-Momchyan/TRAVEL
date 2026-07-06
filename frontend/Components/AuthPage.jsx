@@ -205,10 +205,10 @@ const AuthPage = () => {
         
         {(isLogin || step === 1) && (
           <div className="flex justify-center space-x-4 mb-8 border-b pb-4 border-gray-200">
-            <button onClick={() => toggleMode(true)} className={`pb-2 text-lg font-bold transition-colors duration-200 ${isLogin ? 'text-[#1a859c] border-b-2 border-[#1a859c]' : 'text-gray-400 hover:text-gray-600'}`}>
+            <button onClick={() => toggleMode(true)} className={`pb-2 text-lg font-bold transition-colors duration-200 ${isLogin ? 'text-[#0369a1] border-b-2 border-[#0ea5e9]' : 'text-gray-400 hover:text-gray-600'}`}>
               {translations.login_tab}
             </button>
-            <button onClick={() => toggleMode(false)} className={`pb-2 text-lg font-bold transition-colors duration-200 ${!isLogin ? 'text-[#1a859c] border-b-2 border-[#1a859c]' : 'text-gray-400 hover:text-gray-600'}`}>
+            <button onClick={() => toggleMode(false)} className={`pb-2 text-lg font-bold transition-colors duration-200 ${!isLogin ? 'text-[#0369a1] border-b-2 border-[#0ea5e9]' : 'text-gray-400 hover:text-gray-600'}`}>
               {translations.signup_tab}
             </button>
           </div>
@@ -247,16 +247,16 @@ const AuthPage = () => {
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">{translations.email_username_label}</label>
                 <input type="text" name="login" value={formData.login} onChange={handleChange} required
-                  className="appearance-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring focus:ring-blue-200 transition sm:text-sm" />
+                  className="appearance-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring focus:ring-sky-200 transition sm:text-sm" />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">{translations.password_label}</label>
                 <input type="password" name="password" value={formData.password} onChange={handleChange} required
-                  className="appearance-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring focus:ring-blue-200 transition sm:text-sm" />
+                  className="appearance-none relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring focus:ring-sky-200 transition sm:text-sm" />
               </div>
             </div>
             <div>
-              <button type="submit" disabled={loading} className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-[#1a859c] hover:bg-[#0b698f] focus:outline-none focus:ring focus:ring-[#d4e8ed] disabled:opacity-50 transition-all">
+              <button type="submit" disabled={loading} className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-[#0ea5e9] hover:bg-[#0284c7] focus:outline-none focus:ring focus:ring-[#bae6fd] disabled:opacity-50 transition-all">
                 {loading ? '...' : translations.signin_btn}
               </button>
             </div>
@@ -272,20 +272,20 @@ const AuthPage = () => {
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">{translations.username_label}</label>
                     <input type="text" name="username" value={formData.username} onChange={handleChange} required
-                      className="appearance-none relative block w-full px-3 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200 transition sm:text-sm" />
+                      className="appearance-none relative block w-full px-3 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-sky-200 transition sm:text-sm" />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">{translations.email_label}</label>
                     <input type="email" name="email" value={formData.email} onChange={handleChange} required
-                      className="appearance-none relative block w-full px-3 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200 transition sm:text-sm" />
+                      className="appearance-none relative block w-full px-3 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-sky-200 transition sm:text-sm" />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">{translations.password_label} *</label>
                     <input type="password" name="password" value={formData.password} onChange={handleChange} required
-                      className="appearance-none relative block w-full px-3 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-200 transition sm:text-sm" />
+                      className="appearance-none relative block w-full px-3 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-sky-200 transition sm:text-sm" />
                   </div>
                 </div>
-                <button type="submit" disabled={loading} className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-[#1a859c] hover:bg-[#0b698f] focus:outline-none focus:ring focus:ring-[#d4e8ed] disabled:opacity-50 transition-all">
+                <button type="submit" disabled={loading} className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-[#0ea5e9] hover:bg-[#0284c7] focus:outline-none focus:ring focus:ring-[#bae6fd] disabled:opacity-50 transition-all">
                   {loading ? '...' : translations.signup_btn}
                 </button>
               </form>
@@ -296,7 +296,7 @@ const AuthPage = () => {
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1 text-center">{translations.code_label}</label>
                   <input type="text" name="otp_code" value={formData.otp_code} onChange={handleChange} required maxLength="6"
-                    className="appearance-none block w-full px-3 py-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-center tracking-[0.75em] text-2xl font-mono" />
+                    className="appearance-none block w-full px-3 py-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-sky-500 focus:border-sky-500 text-center tracking-[0.75em] text-2xl font-mono" />
                 </div>
                 <button type="submit" disabled={loading} className="w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 disabled:opacity-50 transition-all">
                   {loading ? '...' : translations.verify_btn}
@@ -309,29 +309,29 @@ const AuthPage = () => {
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">{translations.country_label}</label>
                   <input type="text" name="country" value={formData.country} onChange={handleChange} required
-                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" />
+                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm" />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">{translations.city_label}</label>
                   <input type="text" name="city" value={formData.city} onChange={handleChange} required
-                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" />
+                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm" />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">{translations.street_label}</label>
                   <input type="text" name="street" value={formData.street} onChange={handleChange} required
-                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" />
+                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm" />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">{translations.postal_code_label}</label>
                   <input type="text" name="postal_code" value={formData.postal_code} onChange={handleChange}
-                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" />
+                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm" />
                 </div>
                 
                 <div className="flex items-center space-x-4 pt-4 border-t border-gray-100">
                   <button type="button" onClick={handleSkip} className="w-1/3 flex justify-center py-2 px-4 border border-gray-300 shadow-sm text-sm font-medium rounded-lg text-gray-700 bg-white hover:bg-gray-50 transition-colors">
                     {translations.skip_btn}
                   </button>
-                  <button type="submit" disabled={loading} className="w-2/3 flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-blue-600 hover:bg-blue-700 disabled:opacity-50 transition-colors">
+                  <button type="submit" disabled={loading} className="w-2/3 flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-sky-600 hover:bg-sky-700 disabled:opacity-50 transition-colors">
                     {loading ? '...' : translations.save_profile_btn}
                   </button>
                 </div>

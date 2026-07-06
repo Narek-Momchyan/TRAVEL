@@ -24,7 +24,7 @@ export default function Pagination({ totalItems, pageSize = 10 }) {
     const inactiveBtnClass = "bg-gray-100 text-gray-600 hover:bg-gray-200";
 
 
-    const activeBtnClass = "bg-[#45b5ba] text-white";
+    const activeBtnClass = "bg-[#0ea5e9] text-white";
 
     return (
         <div className="flex items-center justify-center gap-2 mt-8 mb-8">

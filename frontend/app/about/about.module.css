@@ -22,7 +22,7 @@
 }
 
 .aboutText h2 {
-  color: #3d93b3;
+  color: #0ea5e9;
   font-size: 22px;
   margin-bottom: 20px;
   text-transform: uppercase;
@@ -30,7 +30,7 @@
 }
 
 .aboutText p {
-  color: #4a8b9e;
+  color: #0ea5e9;
   font-size: 16px;
   line-height: 1.8;
   margin-bottom: 40px;
@@ -59,7 +59,7 @@
 }
 
 .teamHeading {
-  color: #3d93b3;
+  color: #0ea5e9;
   font-size: 32px;
   text-transform: uppercase;
   font-weight: 700;
@@ -92,7 +92,7 @@
 }
 
 .teamInfo {
-  background-color: #3d93b3;
+  background-color: #0ea5e9;
   color: white;
   padding: 12px;
   text-align: center;

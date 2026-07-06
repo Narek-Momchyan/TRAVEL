@@ -1,7 +1,7 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from .views import (
-     LogoViewSet, HomeimgViewSet, LanguagesViewSet,
+     LogoViewSet, HomeVideoViewSet, LanguagesViewSet,
     NavbarViewSet, DropdownViewSet, HeroInfoViewSet, ProductViewSet,
     RatingViewSet, CompainesViewSet, MainTitleViewSet, ItemViewSet, 
     SectionImageViewSet, WhyChooseUsViewSet, PopularItemsViewSet, ContactViewSet,
@@ -12,7 +12,7 @@ from rest_framework_simplejwt.views import TokenVerifyView
 
 router = DefaultRouter()
 router.register(r'logos', LogoViewSet, basename='logos')
-router.register(r'homeimgs', HomeimgViewSet, basename='homeimgs')
+router.register(r'homeimgs', HomeVideoViewSet, basename='homeimgs')
 router.register(r'languages', LanguagesViewSet)
 router.register(r'navbars', NavbarViewSet, basename='navbars')
 router.register(r'dropdowns', DropdownViewSet)

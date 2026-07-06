@@ -161,7 +161,7 @@ export default function ProfilePage() {
                   )}
                 </div>
                 {isEditing && (
-                  <label className="absolute bottom-0 right-0 bg-blue-600 p-2 rounded-full text-white cursor-pointer hover:bg-blue-700 shadow-md transition-transform hover:scale-105">
+                  <label className="absolute bottom-0 right-0 bg-sky-600 p-2 rounded-full text-white cursor-pointer hover:bg-sky-700 shadow-md transition-transform hover:scale-105">
                     <FaCamera size={14} />
                     <input type="file" accept="image/*" onChange={handleImageChange} className="hidden" />
                   </label>
@@ -192,7 +192,7 @@ export default function ProfilePage() {
                     <FaTimes />
                     <span className="font-semibold">{translations.cancel_btn}</span>
                   </button>
-                  <button onClick={handleSave} disabled={saveLoading} className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50">
+                  <button onClick={handleSave} disabled={saveLoading} className="flex items-center space-x-2 px-4 py-2 bg-sky-600 text-white rounded-lg hover:bg-sky-700 transition-colors disabled:opacity-50">
                     <FaSave />
                     <span className="font-semibold">{saveLoading ? '...' : translations.save_btn}</span>
                   </button>
@@ -209,7 +209,7 @@ export default function ProfilePage() {
                 <div>
                   <p className="text-sm text-gray-500 mb-1">{translations.first_name_label}</p>
                   {isEditing ? (
-                    <input type="text" name="first_name" value={formData.first_name || ''} onChange={handleInputChange} className="w-full px-3 py-2 border rounded-md focus:ring focus:ring-blue-200 outline-none transition" />
+                    <input type="text" name="first_name" value={formData.first_name || ''} onChange={handleInputChange} className="w-full px-3 py-2 border rounded-md focus:ring focus:ring-sky-200 outline-none transition" />
                   ) : (
                     <p className="font-medium text-gray-900">{user.first_name || '-'}</p>
                   )}
@@ -217,7 +217,7 @@ export default function ProfilePage() {
                 <div>
                   <p className="text-sm text-gray-500 mb-1">{translations.last_name_label}</p>
                   {isEditing ? (
-                    <input type="text" name="last_name" value={formData.last_name || ''} onChange={handleInputChange} className="w-full px-3 py-2 border rounded-md focus:ring focus:ring-blue-200 outline-none transition" />
+                    <input type="text" name="last_name" value={formData.last_name || ''} onChange={handleInputChange} className="w-full px-3 py-2 border rounded-md focus:ring focus:ring-sky-200 outline-none transition" />
                   ) : (
                     <p className="font-medium text-gray-900">{user.last_name || '-'}</p>
                   )}
@@ -248,20 +248,20 @@ export default function ProfilePage() {
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <p className="text-sm text-gray-500 mb-1">Country</p>
-                      <input type="text" name="country" value={formData.country || ''} onChange={handleInputChange} className="w-full px-3 py-2 border rounded-md focus:ring focus:ring-blue-200 outline-none" />
+                      <input type="text" name="country" value={formData.country || ''} onChange={handleInputChange} className="w-full px-3 py-2 border rounded-md focus:ring focus:ring-sky-200 outline-none" />
                     </div>
                     <div>
                       <p className="text-sm text-gray-500 mb-1">City</p>
-                      <input type="text" name="city" value={formData.city || ''} onChange={handleInputChange} className="w-full px-3 py-2 border rounded-md focus:ring focus:ring-blue-200 outline-none" />
+                      <input type="text" name="city" value={formData.city || ''} onChange={handleInputChange} className="w-full px-3 py-2 border rounded-md focus:ring focus:ring-sky-200 outline-none" />
                     </div>
                   </div>
                   <div>
                     <p className="text-sm text-gray-500 mb-1">Street</p>
-                    <input type="text" name="street" value={formData.street || ''} onChange={handleInputChange} className="w-full px-3 py-2 border rounded-md focus:ring focus:ring-blue-200 outline-none" />
+                    <input type="text" name="street" value={formData.street || ''} onChange={handleInputChange} className="w-full px-3 py-2 border rounded-md focus:ring focus:ring-sky-200 outline-none" />
                   </div>
                   <div>
                     <p className="text-sm text-gray-500 mb-1">Postal Code</p>
-                    <input type="text" name="postal_code" value={formData.postal_code || ''} onChange={handleInputChange} className="w-full px-3 py-2 border rounded-md focus:ring focus:ring-blue-200 outline-none" />
+                    <input type="text" name="postal_code" value={formData.postal_code || ''} onChange={handleInputChange} className="w-full px-3 py-2 border rounded-md focus:ring focus:ring-sky-200 outline-none" />
                   </div>
                 </div>
               ) : (

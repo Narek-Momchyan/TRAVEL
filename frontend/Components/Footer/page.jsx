@@ -17,7 +17,7 @@ export default async function Footer() {
   if (!footerData) return null;
 
   return (
-    <footer className="bg-[#3597ad] text-white pt-8 pb-4 font-sans">
+    <footer className="bg-[#0ea5e9] text-white pt-8 pb-4 font-sans">
       <div className="container mx-auto px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center gap-8 md:gap-6">
           
@@ -33,12 +33,12 @@ export default async function Footer() {
 
           <div className="flex items-center gap-3">
             {footerData.facebook_url && (
-              <Link href={footerData.facebook_url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-8 h-8 rounded-full bg-white text-[#3597ad] hover:scale-110 shadow transition-transform">
+              <Link href={footerData.facebook_url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-8 h-8 rounded-full bg-white text-[#0ea5e9] hover:scale-110 shadow transition-transform">
                 <FaFacebookF size={16} />
               </Link>
             )}
             {footerData.twitter_url && (
-              <Link href={footerData.twitter_url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-8 h-8 rounded-full bg-white text-[#3597ad] hover:scale-110 shadow transition-transform">
+              <Link href={footerData.twitter_url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-8 h-8 rounded-full bg-white text-[#0ea5e9] hover:scale-110 shadow transition-transform">
                 <FaTwitter size={16} />
               </Link>
             )}
@@ -48,12 +48,12 @@ export default async function Footer() {
               </Link>
             )}
             {footerData.linkedin_url && (
-              <Link href={footerData.linkedin_url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-8 h-8 rounded bg-white text-[#3597ad] hover:scale-110 shadow transition-transform">
+              <Link href={footerData.linkedin_url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-8 h-8 rounded bg-white text-[#0ea5e9] hover:scale-110 shadow transition-transform">
                 <FaLinkedinIn size={16} />
               </Link>
             )}
             {footerData.telegram_url && (
-              <Link href={footerData.telegram_url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-8 h-8 rounded-full bg-white text-[#3597ad] hover:scale-110 shadow transition-transform">
+              <Link href={footerData.telegram_url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-8 h-8 rounded-full bg-white text-[#0ea5e9] hover:scale-110 shadow transition-transform">
                 <FaTelegramPlane size={16} />
               </Link>
             )}

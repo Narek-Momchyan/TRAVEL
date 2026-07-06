@@ -35,10 +35,10 @@ export default function AuthButtons() {
   if (isLoggedIn) {
     return (
       <div style={{ display: 'flex', gap: '10px' }}>
-        <Link href="/profile" className={style.registerBtn} style={{ padding: '8px 16px', background: '#1a859c', color: '#fff', borderRadius: '4px', textDecoration: 'none', fontWeight: 'bold' }}>
+        <Link href="/profile" className={style.registerBtn} style={{ padding: '8px 16px', background: '#0ea5e9', color: '#fff', borderRadius: '4px', textDecoration: 'none', fontWeight: 'bold' }}>
           <FaUser />
         </Link>
-        <button onClick={handleLogout} className={style.registerBtn} style={{ padding: '8px 16px', background: '#1a859c', color: '#fff', borderRadius: '4px', textDecoration: 'none', fontWeight: 'bold', border: 'none', cursor: 'pointer' }}>
+        <button onClick={handleLogout} className={style.registerBtn} style={{ padding: '8px 16px', background: '#0ea5e9', color: '#fff', borderRadius: '4px', textDecoration: 'none', fontWeight: 'bold', border: 'none', cursor: 'pointer' }}>
           <FaSignOutAlt />
         </button>
       </div>
@@ -46,7 +46,7 @@ export default function AuthButtons() {
   }
 
   return (
-    <Link href="/register" className={style.registerBtn} style={{ marginLeft: '15px', padding: '8px 16px', background: '#1a859c', color: '#fff', borderRadius: '4px', textDecoration: 'none', fontWeight: 'bold' }}>
+    <Link href="/register" className={style.registerBtn} style={{ marginLeft: '15px', padding: '8px 16px', background: '#0ea5e9', color: '#fff', borderRadius: '4px', textDecoration: 'none', fontWeight: 'bold' }}>
       <FaUser />
     </Link>
   );

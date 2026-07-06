@@ -39,11 +39,13 @@ class Languages(models.Model):
         return self.label
 
 
-class Homeimg(models.Model):
-    Homeimg = models.ImageField(upload_to='images/home/')
-
+class HomeVideo(models.Model):
+    video_file = models.FileField(
+        upload_to='videos/home/',
+        validators=[FileExtensionValidator(allowed_extensions=['mp4', 'avi', 'mov', 'webm'])]
+    )
     def __str__(self):
-        return "Homeimg"
+        return "Homevideo"
 
 
 class Hero_info(models.Model):

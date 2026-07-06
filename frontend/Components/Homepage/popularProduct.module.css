@@ -1,6 +1,6 @@
 .section {
   padding: 5rem 1rem 6rem;
-  background: #f7fbfc;
+  background: #f8fafc;
 }
 
 
@@ -21,13 +21,13 @@
 }
 
 .swiper :global(.swiper-pagination-bullet) {
-  background: #0b698f;
+  background: #0284c7;
   opacity: 0.4;
 }
 
 .swiper :global(.swiper-pagination-bullet-active) {
   opacity: 1;
-  background: #0b698f;
+  background: #0284c7;
 }
 
 .slide {
@@ -39,12 +39,12 @@
   background: #ffffff;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 8px 30px rgba(11, 92, 122, 0.12);
+  box-shadow: 0 8px 30px rgba(3, 105, 161, 0.12);
   transition: box-shadow 0.3s ease;
 }
 
 .card:hover {
-  box-shadow: 0 20px 40px rgba(0,0,0,0.15), 0 0 0 2px #1a859c;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15), 0 0 0 2px #0ea5e9;
 }
 
 .card:hover .imageWrapper img {
@@ -73,7 +73,7 @@
   position: absolute;
   top: 12px;
   right: 12px;
-  background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+  background: linear-gradient(135deg, #f43f5e, #e11d48);
   color: white;
   font-size: 0.75rem;
   font-weight: 700;
@@ -92,7 +92,7 @@
 .tag {
   font-size: 0.72rem;
   font-weight: 700;
-  color: #1a9bbf;
+  color: #0369a1;
   text-transform: uppercase;
   letter-spacing: 0.08em;
 }
@@ -100,7 +100,7 @@
 .cardTitle {
   font-size: 1rem;
   font-weight: 800;
-  color: #0b5c7a;
+  color: #0369a1;
   margin: 0;
   text-transform: uppercase;
   letter-spacing: 0.03em;
@@ -108,7 +108,7 @@
 
 .cardDesc {
   font-size: 0.82rem;
-  color: #7aafc0;
+  color: #38bdf8;
   line-height: 1.5;
   margin: 0;
   display: -webkit-box;
@@ -138,11 +138,11 @@
 .price {
   font-size: 1.2rem;
   font-weight: 800;
-  color: #0b698f;
+  color: #0369a1;
 }
 
 .stars {
-  color: #ffd700;
+  color: #f59e0b;
   font-size: 0.9rem;
   letter-spacing: 0.05em;
 }

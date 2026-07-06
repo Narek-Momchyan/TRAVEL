@@ -15,14 +15,14 @@
 .searchBox {
     display: flex;
     align-items: center;
-    border: 1.5px solid #48aeb6;
+    border: 1.5px solid #0ea5e9;
     padding: 8px 15px;
     border-radius: 2px;
     width: 320px;
 }
 
 .searchIcon {
-    color: #48aeb6;
+    color: #0369a1;
     font-size: 16px;
     margin-right: 15px;
 }
@@ -31,12 +31,12 @@
     border: none;
     outline: none;
     font-size: 16px;
-    color: #48aeb6;
+    color: #0369a1;
     width: 100%;
 }
 
 .searchInput::placeholder {
-    color: #48aeb6;
+    color: #0369a1;
 }
 
 .priceFilterBox {
@@ -46,22 +46,22 @@
 }
 
 .priceInput {
-    border: 1.5px solid #48aeb6;
+    border: 1.5px solid #0ea5e9;
     width: 60px;
     padding: 8px 5px;
     text-align: center;
     outline: none;
-    color: #48aeb6;
+    color: #0369a1;
     font-size: 16px;
     border-radius: 2px;
 }
 
 .priceInput::placeholder {
-    color: #48aeb6;
+    color: #0369a1;
 }
 
 .separator {
-    color: #48aeb6;
+    color: #0369a1;
     font-weight: bold;
     font-size: 20px;
 }
@@ -114,7 +114,7 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(72, 174, 182, 0.9);
+    background-color: rgba(3, 105, 161, 0.9);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -133,7 +133,7 @@
 @media (hover: hover) {
     .card:hover .bottomBar {
         background-color: #fff;
-        color: #48aeb6;
+        color: #0ea5e9;
     }
 
     .heartIcon:hover {
@@ -147,7 +147,7 @@
     }
 }
 .card:hover {
-    box-shadow: 0 15px 35px rgba(0,0,0,0.15), 0 0 0 2px #48aeb6;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15), 0 0 0 2px #0ea5e9;
 }
 .card:hover .productImage {
     opacity: 0.9;
@@ -185,13 +185,13 @@
 
 .rating {
     font-size: 14px;
-    color: #f39c12;
+    color: #d97706;
     font-weight: bold;
 }
 
 .price {
     font-size: 16px;
-    color: #48aeb6;
+    color: #0369a1;
     font-weight: bold;
 }
 

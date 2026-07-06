@@ -31,7 +31,7 @@
 }
 
 .heartIcon {
-  color: #1a859c;
+  color: #0369a1;
   font-size: 28px;
   cursor: pointer;
 }
@@ -49,7 +49,7 @@
 .navItem {
   font-size: 16px;
   font-weight: 700;
-  color: #1a859c;
+  color: #0369a1;
   cursor: pointer;
   text-transform: uppercase;
   padding: 10px 0;
@@ -67,9 +67,9 @@
   padding: 12px 0;
   min-width: 250px;
   z-index: 100;
-  box-shadow: 0 15px 35px rgba(26, 133, 156, 0.15);
+  box-shadow: 0 15px 35px rgba(14, 165, 233, 0.15);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 1px solid rgba(26, 133, 156, 0.08);
+  border: 1px solid rgba(14, 165, 233, 0.08);
   display: flex;
   flex-direction: column;
 }
@@ -94,7 +94,7 @@
   padding: 12px 24px;
   font-size: 15px;
   font-weight: 500;
-  color: #4a5568;
+  color: #334155;
   cursor: pointer;
   transition: all 0.2s ease;
   text-decoration: none;
@@ -103,8 +103,8 @@
 
 @media (min-width: 769px) {
   .navDropdownItem:hover {
-    background-color: #f4fafb;
-    color: #0b698f;
+    background-color: #f0f9ff;
+    color: #0369a1;
     padding-left: 28px;
   }
 }
@@ -117,7 +117,7 @@
 }
 
 .globus {
-  color: #1a859c;
+  color: #0369a1;
   font-size: 26px;
   cursor: pointer;
 }
@@ -127,7 +127,7 @@
   top: 130%;
   right: -5px;
   background-color: #ffffff;
-  border: 1px solid #d4e8ed;
+  border: 1px solid #bae6fd;
   border-radius: 4px;
   padding: 5px 0;
   z-index: 10;
@@ -141,7 +141,7 @@
   padding: 5px 15px;
   font-size: 14px;
   font-weight: 700;
-  color: #1a859c;
+  color: #0369a1;
   cursor: pointer;
   text-transform: uppercase;
   margin: 0;
@@ -149,7 +149,7 @@
 }
 
 .leng:hover {
-  background-color: #f0f7f9;
+  background-color: #f0f9ff;
 }
 
 @media (max-width: 1024px) {
@@ -181,7 +181,7 @@
 .bar {
   width: 30px;
   height: 3px;
-  background: #1a859c;
+  background: #0ea5e9;
   border-radius: 10px;
   transition: all 0.3s linear;
   position: relative;

@@ -1,7 +1,7 @@
 from codecs import __all__
 from rest_framework import serializers
 from .models import (
-    Logo, Navbar, Dropdown, Languages, Homeimg, Hero_info,
+    Logo, Navbar, Dropdown, Languages, HomeVideo, Hero_info,
     product, Rating, compaines, MainTitle, Item, SectionImage,
     About, myTeam, footer, ProfileTranslation, AuthTranslation
 )
@@ -13,10 +13,10 @@ class LogoSerializer(serializers.ModelSerializer):
         model = Logo
         fields = ['img_route']
 
-class HomeimgSerializer(serializers.ModelSerializer):
+class HomeVideoSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Homeimg
-        fields = ['Homeimg']
+        model = HomeVideo
+        fields = ['video_file']
 
 class LanguagesSerializer(serializers.ModelSerializer):
     class Meta:

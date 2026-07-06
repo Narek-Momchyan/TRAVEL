@@ -115,17 +115,17 @@ export default function FloatingChatWidget() {
         className={`mb-4 w-80 sm:w-96 h-[500px] bg-white rounded-2xl shadow-2xl border border-gray-100 flex flex-col overflow-hidden transition-all duration-300 transform origin-bottom-right ${isOpen ? "scale-100 opacity-100 pointer-events-auto" : "scale-0 opacity-0 pointer-events-none"
           }`}
       >
-        <div className="bg-[#1a859c] text-white p-4 flex justify-between items-center shadow-md z-10">
+        <div className="bg-[#0ea5e9] text-white p-4 flex justify-between items-center shadow-md z-10">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-[#1a859c] font-bold text-xl">
+            <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-[#0369a1] font-bold text-xl">
               AI
             </div>
             <div>
               <h3 className="font-bold text-sm">Tour Guide</h3>
-              <p className="text-xs text-[#e0f2f7]">Online</p>
+              <p className="text-xs text-[#f1f5f9]">Online</p>
             </div>
           </div>
-          <button onClick={() => setIsOpen(false)} className="text-[#e0f2f7] hover:text-white transition-colors text-xl font-bold">
+          <button onClick={() => setIsOpen(false)} className="text-[#f1f5f9] hover:text-white transition-colors text-xl font-bold">
             ×
           </button>
         </div>
@@ -145,7 +145,7 @@ export default function FloatingChatWidget() {
             <div key={msg.id} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
               <div
                 className={`max-w-[80%] p-3 rounded-2xl text-sm ${msg.role === "user"
-                    ? "bg-[#1a859c] text-white rounded-br-none"
+                    ? "bg-[#0ea5e9] text-white rounded-br-none"
                     : "bg-white border border-gray-200 text-gray-800 rounded-bl-none shadow-sm"
                   }`}
               >
@@ -174,12 +174,12 @@ export default function FloatingChatWidget() {
             onKeyDown={handleKeyDown}
             placeholder={isAuthenticated ? "Type your message..." : "Please log in..."}
             disabled={isLoading || !isAuthenticated}
-            className="flex-1 p-2 bg-gray-100 border-transparent rounded-xl focus:outline-none focus:ring-2 focus:ring-[#1a859c] text-sm transition-all disabled:opacity-50"
+            className="flex-1 p-2 bg-gray-100 border-transparent rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0ea5e9] text-sm transition-all disabled:opacity-50"
           />
           <button
             onClick={sendMessage}
             disabled={isLoading || !inputValue.trim() || !isAuthenticated}
-            className="bg-[#1a859c] text-white p-2 rounded-xl w-10 h-10 flex justify-center items-center hover:bg-[#136b7d] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="bg-[#0ea5e9] text-white p-2 rounded-xl w-10 h-10 flex justify-center items-center hover:bg-[#0284c7] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             ➤
           </button>
@@ -188,8 +188,8 @@ export default function FloatingChatWidget() {
 
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="pointer-events-auto w-14 h-14 bg-[#1a859c] rounded-full flex items-center justify-center text-white shadow-xl hover:bg-[#136b7d] transition-all transform hover:scale-105 active:scale-95"
-        style={{ boxShadow: "0 4px 14px 0 rgba(26, 133, 156, 0.39)" }}
+        className="pointer-events-auto w-14 h-14 bg-[#0ea5e9] rounded-full flex items-center justify-center text-white shadow-xl hover:bg-[#0284c7] transition-all transform hover:scale-105 active:scale-95"
+        style={{ boxShadow: "0 4px 14px 0 rgba(14, 165, 233, 0.39)" }}
       >
         {isOpen ? (
           <span className="text-2xl font-bold">×</span>

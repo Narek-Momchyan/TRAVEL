@@ -12,14 +12,14 @@ from .tasks import send_contact_email_task
 
 from .filters import TourPackageFilter
 from .models import (
-    Logo, Navbar, Dropdown, Languages, Homeimg, Hero_info,
+    Logo, Navbar, Dropdown, Languages, HomeVideo, Hero_info,
     product,Rating, compaines, MainTitle, Item, SectionImage,
     About, myTeam, footer, ProfileTranslation, AuthTranslation, Favorite
 )
 from .serializers import (
     ContactSerializer,
     LogoSerializer, NavbarSerializer, DropdownSerializer, LanguagesSerializer,
-    HomeimgSerializer, HeroInfoSerializer, TourPackageSerializer,
+    HomeVideoSerializer, HeroInfoSerializer, TourPackageSerializer,
     RatingSerializer, CompainesSerializer, MainTitleSerializer,
     ItemSerializer, SectionImageSerializer,
     AboutSerializer, MyTeamSerializer, footerSerializer, ProfileTranslationSerializer, AuthTranslationSerializer,FavoriteSerializer
@@ -56,10 +56,10 @@ class LogoViewSet(SingleImageBaseViewSet):
     image_field_name = 'img_route'
 
 
-class HomeimgViewSet(SingleImageBaseViewSet):
-    queryset = Homeimg.objects.all().order_by('id')
-    serializer_class = HomeimgSerializer
-    image_field_name = 'Homeimg'
+class HomeVideoViewSet(SingleImageBaseViewSet):
+    queryset = HomeVideo.objects.all().order_by('id')
+    serializer_class = HomeVideoSerializer
+    image_field_name = 'video_file'
 
 
 class SectionImageViewSet(SingleImageBaseViewSet):
