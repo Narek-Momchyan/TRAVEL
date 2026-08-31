@@ -3,7 +3,7 @@ import React from 'react';
 
 export default async function PageBanner({ title }) {
     const response = await api.get("homeimgs/");
-    const videoUrl = response.data?.image;
+    const videoUrl = response.data?.[0]?.image;
 
     return (
         <div className="relative w-full h-[70vh] min-h-[600px] flex items-center mt-10 overflow-hidden">

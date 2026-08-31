@@ -9,8 +9,8 @@ const AuthPage = () => {
   const router = useRouter(); // Նախաստեղծում ենք router-ը
 
   const [isLogin, setIsLogin] = useState(true);
-  const [step, setStep] = useState(1); 
-  
+  const [step, setStep] = useState(1);
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [successMsg, setSuccessMsg] = useState('');
@@ -28,7 +28,7 @@ const AuthPage = () => {
   useEffect(() => {
     const token = localStorage.getItem('accessToken');
     if (token) {
-      router.push('/profile'); 
+      router.push('/profile');
     }
 
     const fetchTranslations = async () => {
@@ -52,7 +52,7 @@ const AuthPage = () => {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    setError(''); 
+    setError('');
   };
 
   const clearMessages = () => {
@@ -96,7 +96,7 @@ const AuthPage = () => {
         window.dispatchEvent(new Event('authChange'));
         setSuccessMsg('Successfully logged in! Redirecting...');
         setTimeout(() => {
-          router.push('/'); 
+          router.push('/');
         }, 1500);
       }
     } catch (err) {
@@ -115,7 +115,7 @@ const AuthPage = () => {
 
     setLoading(true);
     clearMessages();
-    
+
     try {
       const payload = {
         username: formData.username,
@@ -127,7 +127,7 @@ const AuthPage = () => {
 
       if (response.status === 201) {
         setSuccessMsg('Verification code sent. Please check your messages.');
-        setStep(2); 
+        setStep(2);
       }
     } catch (err) {
       setError(parseError(err));
@@ -152,9 +152,9 @@ const AuthPage = () => {
       if (response.status === 200) {
         localStorage.setItem('accessToken', response.data.tokens.access);
         localStorage.setItem('refreshToken', response.data.tokens.refresh);
-        
+
         setSuccessMsg('Account verified. Let\'s set up your address.');
-        setStep(3); 
+        setStep(3);
       }
     } catch (err) {
       setError(parseError(err));
@@ -192,17 +192,17 @@ const AuthPage = () => {
   };
 
   const handleSkip = () => {
-      router.push('/');
+    router.push('/');
   };
 
-  if (!translations) return null; 
+  if (!translations) return null;
 
- 
+
 
   return (
     <div className="min-h-screen mt-20 flex items-center justify-center bg-gray-50 px-4 py-12 sm:px-6 lg:px-8 font-sans">
       <div className="max-w-md w-full space-y-8 bg-white rounded-2xl shadow-xl p-10">
-        
+
         {(isLogin || step === 1) && (
           <div className="flex justify-center space-x-4 mb-8 border-b pb-4 border-gray-200">
             <button onClick={() => toggleMode(true)} className={`pb-2 text-lg font-bold transition-colors duration-200 ${isLogin ? 'text-[#0369a1] border-b-2 border-[#0ea5e9]' : 'text-gray-400 hover:text-gray-600'}`}>
@@ -214,7 +214,7 @@ const AuthPage = () => {
           </div>
         )}
 
-        <div className="text-center -mt-10">
+        <div className="text-center -mt-5">
           <h2 className="text-3xl font-extrabold text-gray-900 tracking-tight">
             {isLogin && translations.welcome_back_title}
             {!isLogin && step === 1 && translations.create_account_title}
@@ -234,7 +234,7 @@ const AuthPage = () => {
             <div className="flex"><div className="ml-3"><p className="text-sm text-red-700">{error}</p></div></div>
           </div>
         )}
-        
+
         {successMsg && (
           <div className="bg-green-50 border-l-4 border-green-400 p-4 rounded-md">
             <div className="flex"><div className="ml-3"><p className="text-sm text-green-700">{successMsg}</p></div></div>
@@ -265,7 +265,7 @@ const AuthPage = () => {
 
         {!isLogin && (
           <div className="mt-8">
-            
+
             {step === 1 && (
               <form onSubmit={handleRegister} className="space-y-6">
                 <div className="space-y-4">
@@ -326,7 +326,7 @@ const AuthPage = () => {
                   <input type="text" name="postal_code" value={formData.postal_code} onChange={handleChange}
                     className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm" />
                 </div>
-                
+
                 <div className="flex items-center space-x-4 pt-4 border-t border-gray-100">
                   <button type="button" onClick={handleSkip} className="w-1/3 flex justify-center py-2 px-4 border border-gray-300 shadow-sm text-sm font-medium rounded-lg text-gray-700 bg-white hover:bg-gray-50 transition-colors">
                     {translations.skip_btn}

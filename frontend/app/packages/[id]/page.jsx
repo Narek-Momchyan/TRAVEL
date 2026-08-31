@@ -16,7 +16,7 @@ export default async function ProductDetailPage(props) {
         const response = await api.get(`products/${id}/?lang=${lang}`);
         productData = response.data;
     } catch (err) {
-        console.error("Error fetching product details:", err);
+        notFound();
     }
 
     if (!productData) {

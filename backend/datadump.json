@@ -1,0 +1,74 @@
+[
+{
+    "model": "sessions.session",
+    "pk": "pqlhndp5qfzjyqk9oz4bgvuhv2qbaoay",
+    "fields": {
+        "session_data": ".eJxVjDkOwjAQAP_iGlm-D0r6vCFae9c4gGwpR4X4O7KUAtqZ0bzZDMde52OjdV6QXZlll1-WID-pDYEPaPfOc2_7uiQ-En7ajU8d6XU7279Bha2ObZJFmQwUAikhHBUZiigetQcVg8wAJlpfhIBgo3bWBHQKo1aZvEfDPl_jyTeG:1waGKX:0_nCrqvzuLSD3QXDDInGmGd4Z8rXR_tYT6A6r_oTzho",
+        "expire_date": "2026-07-02T17:15:05.654Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "s8jd1wiftyjndug79ri1u1lto29v2am2",
+    "fields": {
+        "session_data": ".eJxVjMsOwiAQAP9lz4YsFCjt0bvfQHbZIlUDSR8n47-bJj3odWYyb4i0byXu67TEWWAEA5dfxpSeUz2EPKjem0qtbsvM6kjUaVd1azK9rmf7Nyi0FhiBPSNS8KYTCdZ0KaP3A1u0xuWhd33yYpxHh5SsdpmRWSNpnYITMh18vsWPNx0:1wVoyU:FB_8wyR0yx50oBlwHEZxG0EXygIYuj_TMrl0vycp-Lg",
+        "expire_date": "2026-06-20T11:13:58.000Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "ua8gpnsrvjr2ck5sky396kurakvppp2k",
+    "fields": {
+        "session_data": ".eJxVjMsKwyAQAP9lz0WU-Myx936DrO5a0xaFmJxK_70EcmivM8O8IeK-1bgPXuNCMIOFyy9LmJ_cDkEPbPcucm_buiRxJOK0Q9w68et6tn-DiqPCDF5LKmqSRNKjtyyLt4GMDZOUyVjO6AqzCwpDCagRDZXkLBEqzSUjfL7tkDkB:1wgK8V:TKKHbIaGtB2baXVZmo0YRoLnrCswS-zVGPEhgCqjscw",
+        "expire_date": "2026-07-19T10:31:43.515Z"
+    }
+},
+{
+    "model": "travel.logo",
+    "pk": 1,
+    "fields": {
+        "img_route": "travel/images/logo.png"
+    }
+},
+{
+    "model": "travel.navbar",
+    "pk": 101,
+    "fields": {
+        "lang": "en",
+        "label": "HOME",
+        "route": "/"
+    }
+},
+{
+    "model": "travel.navbar",
+    "pk": 102,
+    "fields": {
+        "lang": "en",
+        "label": "PACKAGES",
+        "route": "/packages"
+    }
+},
+{
+    "model": "travel.navbar",
+    "pk": 103,
+    "fields": {
+        "lang": "en",
+        "label": "ABOUT",
+        "route": "/about"
+    }
+},
+{
+    "model": "travel.navbar",
+    "pk": 104,
+    "fields": {
+        "lang": "en",
+        "label": "CONTACT",
+        "route": "/contact"
+    }
+},
+{
+    "model": "travel.navbar",
+    "pk": 105,
+    "fields": {
+        "lang": "am",
+        "label": 

@@ -88,7 +88,7 @@ class CompainesSerializer(serializers.ModelSerializer):
 
 
 class MainTitleSerializer(serializers.ModelSerializer):
-    class Meta:
+    class Meta: 
         model = MainTitle
         fields = ['title']
 
