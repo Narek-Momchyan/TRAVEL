@@ -1,13 +1,16 @@
 import axios from "axios";
 
 const isServer = typeof window === "undefined";
-const baseURL = isServer 
-    ? "http://backend:8000/api/" 
-    : process.env.NEXT_PUBLIC_BASE_URL;
+
+const isProduction = process.env.NODE_ENV === "production";
+
+const baseURL = isProduction
+  ? process.env.NEXT_PUBLIC_BASE_URL
+  : (isServer ? "http://backend:8000/api/" : process.env.NEXT_PUBLIC_BASE_URL);
 
 export default axios.create({
-    baseURL: baseURL,
-    headers: isServer ? {
-        "X-Forwarded-Host": "127.0.0.1:8000"
-    } : {}
+  baseURL: baseURL,
+  headers: (isServer && !isProduction) ? {
+    "X-Forwarded-Host": "127.0.0.1:8000"
+  } : {}
 });
