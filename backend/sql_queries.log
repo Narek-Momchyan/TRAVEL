@@ -1039,3 +1039,8 @@
 [2026-08-31 12:01:45,097] [Time: 0.012772179999956279s] (0.013) SELECT "travel_favorite"."id", "travel_favorite"."user_id", "travel_favorite"."product_id", "travel_favorite"."created_at" FROM "travel_favorite" WHERE "travel_favorite"."user_id" = 3 ORDER BY "travel_favorite"."created_at" DESC; args=(3,); alias=default
 [2026-08-31 12:01:45,098] [Time: 0.009660428999950454s] (0.010) SELECT "ai_chat_chatsession"."id", "ai_chat_chatsession"."user_id", "ai_chat_chatsession"."title", "ai_chat_chatsession"."language", "ai_chat_chatsession"."created_at", "ai_chat_chatsession"."updated_at" FROM "ai_chat_chatsession" WHERE "ai_chat_chatsession"."user_id" = 3 ORDER BY "ai_chat_chatsession"."updated_at" DESC; args=(3,); alias=default
 [2026-08-31 12:01:45,127] [Time: 0.013851705999968544s] (0.014) SELECT "ai_chat_chatmessage"."id", "ai_chat_chatmessage"."session_id", "ai_chat_chatmessage"."role", "ai_chat_chatmessage"."content", "ai_chat_chatmessage"."timestamp" FROM "ai_chat_chatmessage" WHERE "ai_chat_chatmessage"."session_id" = 15 ORDER BY "ai_chat_chatmessage"."timestamp" ASC; args=(15,); alias=default
+[2026-08-31 12:49:05,484] [Time: 0.026312659000723215s] (0.026) 
+            SELECT name, type FROM sqlite_master
+            WHERE type in ('table', 'view') AND NOT name='sqlite_sequence'
+            ORDER BY name; args=None; alias=default
+[2026-08-31 12:49:05,507] [Time: 0.009661410999797226s] (0.010) SELECT "django_migrations"."id", "django_migrations"."app", "django_migrations"."name", "django_migrations"."applied" FROM "django_migrations"; args=(); alias=default
