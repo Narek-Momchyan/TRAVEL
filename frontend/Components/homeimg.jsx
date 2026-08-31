@@ -3,7 +3,10 @@ import React from 'react';
 
 export default async function PageBanner({ title }) {
     const response = await api.get("homeimgs/");
-    const videoUrl = response.data?.[0]?.image;
+    let videoUrl = response.data?.image;
+    if (videoUrl && videoUrl.includes("backend:8000")) {
+        videoUrl = videoUrl.replace("backend:8000", "localhost:8000");
+    }
 
     return (
         <div className="relative w-full h-[70vh] min-h-[600px] flex items-center mt-10 overflow-hidden">

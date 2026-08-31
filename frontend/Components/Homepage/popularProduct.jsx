@@ -67,10 +67,10 @@ export default function Popularproduct({ products }) {
                   <div className={styles.cardFooter}>
                     <div className={styles.priceBlock}>
                       {item.discount_percentage > 0 && (
-                        <span className={styles.oldPrice}>${item.price.toLocaleString()}</span>
+                        <span className={styles.oldPrice}>${item.price.toLocaleString('en-US')}</span>
                       )}
                       <span className={styles.price}>
-                        ${(item.price * (1 - item.discount_percentage / 100)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+                        ${(item.price * (1 - item.discount_percentage / 100)).toLocaleString('en-US', { maximumFractionDigits: 0 })}
                       </span>
                     </div>
                     <div className={styles.stars}>
