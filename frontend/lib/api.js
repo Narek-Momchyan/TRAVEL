@@ -6,7 +6,7 @@ const isProduction = process.env.NODE_ENV === "production";
 
 const baseURL = isProduction
   ? process.env.NEXT_PUBLIC_BASE_URL
-  : (isServer ? "http://backend:8000/api/" : process.env.NEXT_PUBLIC_BASE_URL);
+  : (isServer ? (process.env.SERVER_BASE_URL || "http://127.0.0.1:8000/api/") : process.env.NEXT_PUBLIC_BASE_URL);
 
 export default axios.create({
   baseURL: baseURL,

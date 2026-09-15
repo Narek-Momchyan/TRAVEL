@@ -233,3 +233,5 @@ import os
 CELERY_BROKER_URL = os.getenv("CELERY_BROKER_URL", "redis://localhost:6379/0")
 
 CELERY_TASK_ALWAYS_EAGER = True
+
+# Trigger reload
