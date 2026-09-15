@@ -34,6 +34,9 @@ USE_X_FORWARDED_HOST = True
 
 ASGI_APPLICATION = 'base.asgi.application'
 # Application definition
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
 AUTH_USER_MODEL = 'accounts.Customer'
 INSTALLED_APPS = [
     'unfold',
