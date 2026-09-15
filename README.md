@@ -54,4 +54,4 @@ docker-compose up --build
 
 ---
 
-*Պրոյեկտը ստեղծվել է Narek Momchyan-ի կողմից*
+
